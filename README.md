@@ -119,16 +119,3 @@ A month-parameterised A4 PDF pack: a network summary page, then one page per reg
 └── images/                   Screenshots
 ```
 
-## Reproduce
-
-```bash
-pip install pandas numpy
-python scripts/generate_data.py     # rebuilds data/*.csv (seed 2026, same output every time)
-python scripts/build_outputs.py     # rebuilds expected results and paginated aggregates
-python scripts/build_preview.py     # rebuilds the preview dashboard CSVs
-```
-Then follow [docs/01-build-guide.md](docs/01-build-guide.md) in Power BI Desktop.
-
-## Tools
-
-Power BI Desktop · Power Query (M) · DAX · Power BI Report Builder · Python (pandas, NumPy) · Git/GitHub
