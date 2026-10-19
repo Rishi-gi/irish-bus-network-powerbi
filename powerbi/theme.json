@@ -1,0 +1,33 @@
+{
+  "name": "Regional Bus Network",
+  "dataColors": ["#0F6E64", "#E8A33D", "#3A6EA5", "#C5221F", "#7A8B99", "#8E5BA8", "#5FA36A", "#B8860B"],
+  "good": "#1E8E3E",
+  "neutral": "#E8A33D",
+  "bad": "#C5221F",
+  "maximum": "#0F6E64",
+  "center": "#F2F4F3",
+  "minimum": "#C5221F",
+  "background": "#FFFFFF",
+  "foreground": "#1F2A2E",
+  "tableAccent": "#0F6E64",
+  "textClasses": {
+    "title": { "fontFace": "Segoe UI Semibold", "fontSize": 13, "color": "#1F2A2E" },
+    "header": { "fontFace": "Segoe UI Semibold", "fontSize": 11, "color": "#1F2A2E" },
+    "label": { "fontFace": "Segoe UI", "fontSize": 10, "color": "#4A5A60" },
+    "callout": { "fontFace": "Segoe UI Semibold", "fontSize": 26, "color": "#1F2A2E" }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [{ "show": true, "color": { "solid": { "color": "#FFFFFF" } }, "transparency": 0 }],
+        "border": [{ "show": true, "color": { "solid": { "color": "#E1E6E4" } }, "radius": 6 }],
+        "visualHeader": [{ "show": true }]
+      }
+    },
+    "page": {
+      "*": {
+        "background": [{ "color": { "solid": { "color": "#F4F6F5" } }, "transparency": 0 }]
+      }
+    }
+  }
+}

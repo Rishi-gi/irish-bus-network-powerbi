@@ -1,0 +1,9 @@
+CauseKey,Cause,CauseCategory,CountsAsLostKm
+0,No issue,None,False
+1,Driver availability,Internal,True
+2,Vehicle defect / breakdown,Internal,True
+3,Traffic congestion,External,True
+4,Road works / diversion,External,True
+5,Severe weather,External,True
+6,Road traffic incident,External,True
+7,AVL / GPS data issue,Data quality,False

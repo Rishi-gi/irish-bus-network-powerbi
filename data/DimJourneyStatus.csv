@@ -1,0 +1,6 @@
+StatusKey,JourneyStatus,StatusGroup,IsOperated,IsLostService
+1,Operated in full,Operated,True,False
+2,Partially operated,Operated,True,True
+3,Stops bypassed,Operated,True,True
+4,Not operated,Not operated,False,True
+5,Operated - AVL non-tracking,Operated,True,False

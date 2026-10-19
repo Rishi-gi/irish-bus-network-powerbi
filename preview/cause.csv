@@ -1,0 +1,541 @@
+Year,Region,ServiceType,Cause,CauseCategory,LostKm,Share
+2024,East,Commuter,Driver availability,Internal,6127,0.3079
+2024,East,Commuter,Road traffic incident,External,981,0.0493
+2024,East,Commuter,Road works / diversion,External,2022,0.1016
+2024,East,Commuter,Severe weather,External,1968,0.0989
+2024,East,Commuter,Traffic congestion,External,3042,0.1529
+2024,East,Commuter,Vehicle defect / breakdown,Internal,5760,0.2894
+2024,East,Regional,Driver availability,Internal,2625,0.3498
+2024,East,Regional,Road traffic incident,External,286,0.0381
+2024,East,Regional,Road works / diversion,External,562,0.0749
+2024,East,Regional,Severe weather,External,1014,0.1351
+2024,East,Regional,Traffic congestion,External,679,0.0905
+2024,East,Regional,Vehicle defect / breakdown,Internal,2338,0.3116
+2024,East,Town,Driver availability,Internal,396,0.3539
+2024,East,Town,Road traffic incident,External,29,0.0259
+2024,East,Town,Road works / diversion,External,117,0.1046
+2024,East,Town,Severe weather,External,109,0.0974
+2024,East,Town,Traffic congestion,External,89,0.0795
+2024,East,Town,Vehicle defect / breakdown,Internal,379,0.3387
+2024,Mid-West,City,Driver availability,Internal,504,0.2697
+2024,Mid-West,City,Road traffic incident,External,69,0.0369
+2024,Mid-West,City,Road works / diversion,External,228,0.122
+2024,Mid-West,City,Severe weather,External,182,0.0974
+2024,Mid-West,City,Traffic congestion,External,317,0.1696
+2024,Mid-West,City,Vehicle defect / breakdown,Internal,569,0.3044
+2024,Mid-West,Commuter,Driver availability,Internal,1360,0.2807
+2024,Mid-West,Commuter,Road traffic incident,External,220,0.0454
+2024,Mid-West,Commuter,Road works / diversion,External,608,0.1255
+2024,Mid-West,Commuter,Severe weather,External,542,0.1119
+2024,Mid-West,Commuter,Traffic congestion,External,376,0.0776
+2024,Mid-West,Commuter,Vehicle defect / breakdown,Internal,1739,0.3589
+2024,Mid-West,Regional,Driver availability,Internal,1456,0.2445
+2024,Mid-West,Regional,Road traffic incident,External,537,0.0902
+2024,Mid-West,Regional,Road works / diversion,External,810,0.136
+2024,Mid-West,Regional,Severe weather,External,425,0.0714
+2024,Mid-West,Regional,Traffic congestion,External,858,0.1441
+2024,Mid-West,Regional,Vehicle defect / breakdown,Internal,1870,0.314
+2024,Mid-West,Town,Driver availability,Internal,240,0.226
+2024,Mid-West,Town,Road traffic incident,External,80,0.0753
+2024,Mid-West,Town,Road works / diversion,External,87,0.0819
+2024,Mid-West,Town,Severe weather,External,139,0.1309
+2024,Mid-West,Town,Traffic congestion,External,134,0.1262
+2024,Mid-West,Town,Vehicle defect / breakdown,Internal,382,0.3597
+2024,North-West,Regional,Driver availability,Internal,2057,0.2574
+2024,North-West,Regional,Road traffic incident,External,752,0.0941
+2024,North-West,Regional,Road works / diversion,External,1006,0.1259
+2024,North-West,Regional,Severe weather,External,811,0.1015
+2024,North-West,Regional,Traffic congestion,External,736,0.0921
+2024,North-West,Regional,Vehicle defect / breakdown,Internal,2630,0.3291
+2024,North-West,Town,Driver availability,Internal,296,0.3978
+2024,North-West,Town,Road traffic incident,External,34,0.0457
+2024,North-West,Town,Road works / diversion,External,78,0.1048
+2024,North-West,Town,Severe weather,External,52,0.0699
+2024,North-West,Town,Traffic congestion,External,49,0.0659
+2024,North-West,Town,Vehicle defect / breakdown,Internal,235,0.3159
+2024,South,City,Driver availability,Internal,1968,0.2732
+2024,South,City,Road traffic incident,External,370,0.0514
+2024,South,City,Road works / diversion,External,910,0.1263
+2024,South,City,Severe weather,External,637,0.0884
+2024,South,City,Traffic congestion,External,1174,0.163
+2024,South,City,Vehicle defect / breakdown,Internal,2144,0.2977
+2024,South,Commuter,Driver availability,Internal,1200,0.323
+2024,South,Commuter,Road traffic incident,External,159,0.0428
+2024,South,Commuter,Road works / diversion,External,360,0.0969
+2024,South,Commuter,Severe weather,External,342,0.0921
+2024,South,Commuter,Traffic congestion,External,480,0.1292
+2024,South,Commuter,Vehicle defect / breakdown,Internal,1174,0.316
+2024,South,Regional,Driver availability,Internal,1848,0.2972
+2024,South,Regional,Road traffic incident,External,478,0.0769
+2024,South,Regional,Road works / diversion,External,424,0.0682
+2024,South,Regional,Severe weather,External,665,0.1069
+2024,South,Regional,Traffic congestion,External,692,0.1113
+2024,South,Regional,Vehicle defect / breakdown,Internal,2111,0.3395
+2024,South-East,City,Driver availability,Internal,296,0.2645
+2024,South-East,City,Road traffic incident,External,69,0.0617
+2024,South-East,City,Road works / diversion,External,142,0.1269
+2024,South-East,City,Severe weather,External,108,0.0965
+2024,South-East,City,Traffic congestion,External,194,0.1734
+2024,South-East,City,Vehicle defect / breakdown,Internal,310,0.277
+2024,South-East,Commuter,Driver availability,Internal,325,0.2252
+2024,South-East,Commuter,Road traffic incident,External,129,0.0894
+2024,South-East,Commuter,Road works / diversion,External,173,0.1199
+2024,South-East,Commuter,Severe weather,External,158,0.1095
+2024,South-East,Commuter,Traffic congestion,External,186,0.1289
+2024,South-East,Commuter,Vehicle defect / breakdown,Internal,472,0.3271
+2024,South-East,Regional,Driver availability,Internal,1804,0.3556
+2024,South-East,Regional,Road traffic incident,External,192,0.0378
+2024,South-East,Regional,Road works / diversion,External,194,0.0382
+2024,South-East,Regional,Severe weather,External,366,0.0721
+2024,South-East,Regional,Traffic congestion,External,549,0.1082
+2024,South-East,Regional,Vehicle defect / breakdown,Internal,1968,0.3879
+2024,South-East,Town,Driver availability,Internal,144,0.2212
+2024,South-East,Town,Road traffic incident,External,62,0.0952
+2024,South-East,Town,Road works / diversion,External,61,0.0937
+2024,South-East,Town,Severe weather,External,35,0.0538
+2024,South-East,Town,Traffic congestion,External,96,0.1475
+2024,South-East,Town,Vehicle defect / breakdown,Internal,253,0.3886
+2024,West,City,Driver availability,Internal,726,0.2358
+2024,West,City,Road traffic incident,External,170,0.0552
+2024,West,City,Road works / diversion,External,350,0.1137
+2024,West,City,Severe weather,External,321,0.1043
+2024,West,City,Traffic congestion,External,597,0.1939
+2024,West,City,Vehicle defect / breakdown,Internal,915,0.2972
+2024,West,Commuter,Driver availability,Internal,858,0.2889
+2024,West,Commuter,Road traffic incident,External,128,0.0431
+2024,West,Commuter,Road works / diversion,External,422,0.1421
+2024,West,Commuter,Severe weather,External,174,0.0586
+2024,West,Commuter,Traffic congestion,External,330,0.1111
+2024,West,Commuter,Vehicle defect / breakdown,Internal,1058,0.3562
+2024,West,Regional,Driver availability,Internal,316,0.101
+2024,West,Regional,Road traffic incident,External,213,0.0681
+2024,West,Regional,Road works / diversion,External,592,0.1893
+2024,West,Regional,Severe weather,External,220,0.0703
+2024,West,Regional,Traffic congestion,External,603,0.1928
+2024,West,Regional,Vehicle defect / breakdown,Internal,1184,0.3785
+2025,East,Commuter,Driver availability,Internal,6375,0.2654
+2025,East,Commuter,Road traffic incident,External,1064,0.0443
+2025,East,Commuter,Road works / diversion,External,2720,0.1132
+2025,East,Commuter,Severe weather,External,4309,0.1794
+2025,East,Commuter,Traffic congestion,External,2872,0.1196
+2025,East,Commuter,Vehicle defect / breakdown,Internal,6683,0.2782
+2025,East,Regional,Driver availability,Internal,2175,0.2708
+2025,East,Regional,Road traffic incident,External,432,0.0538
+2025,East,Regional,Road works / diversion,External,622,0.0774
+2025,East,Regional,Severe weather,External,1617,0.2013
+2025,East,Regional,Traffic congestion,External,810,0.1009
+2025,East,Regional,Vehicle defect / breakdown,Internal,2375,0.2957
+2025,East,Town,Driver availability,Internal,369,0.2995
+2025,East,Town,Road traffic incident,External,28,0.0227
+2025,East,Town,Road works / diversion,External,131,0.1063
+2025,East,Town,Severe weather,External,327,0.2654
+2025,East,Town,Traffic congestion,External,81,0.0657
+2025,East,Town,Vehicle defect / breakdown,Internal,296,0.2403
+2025,Mid-West,City,Driver availability,Internal,450,0.2209
+2025,Mid-West,City,Road traffic incident,External,93,0.0457
+2025,Mid-West,City,Road works / diversion,External,174,0.0854
+2025,Mid-West,City,Severe weather,External,432,0.2121
+2025,Mid-West,City,Traffic congestion,External,298,0.1463
+2025,Mid-West,City,Vehicle defect / breakdown,Internal,590,0.2896
+2025,Mid-West,Commuter,Driver availability,Internal,1160,0.2357
+2025,Mid-West,Commuter,Road traffic incident,External,330,0.067
+2025,Mid-West,Commuter,Road works / diversion,External,410,0.0833
+2025,Mid-West,Commuter,Severe weather,External,920,0.1869
+2025,Mid-West,Commuter,Traffic congestion,External,454,0.0922
+2025,Mid-West,Commuter,Vehicle defect / breakdown,Internal,1648,0.3348
+2025,Mid-West,Regional,Driver availability,Internal,1456,0.2004
+2025,Mid-West,Regional,Road traffic incident,External,411,0.0566
+2025,Mid-West,Regional,Road works / diversion,External,456,0.0628
+2025,Mid-West,Regional,Severe weather,External,1331,0.1832
+2025,Mid-West,Regional,Traffic congestion,External,809,0.1114
+2025,Mid-West,Regional,Vehicle defect / breakdown,Internal,2802,0.3857
+2025,Mid-West,Town,Driver availability,Internal,260,0.2303
+2025,Mid-West,Town,Road traffic incident,External,60,0.0531
+2025,Mid-West,Town,Road works / diversion,External,59,0.0523
+2025,Mid-West,Town,Severe weather,External,305,0.2702
+2025,Mid-West,Town,Traffic congestion,External,123,0.1089
+2025,Mid-West,Town,Vehicle defect / breakdown,Internal,322,0.2852
+2025,North-West,Regional,Driver availability,Internal,2488,0.2524
+2025,North-West,Regional,Road traffic incident,External,355,0.036
+2025,North-West,Regional,Road works / diversion,External,1288,0.1307
+2025,North-West,Regional,Severe weather,External,2021,0.205
+2025,North-West,Regional,Traffic congestion,External,479,0.0486
+2025,North-West,Regional,Vehicle defect / breakdown,Internal,3226,0.3273
+2025,North-West,Town,Driver availability,Internal,192,0.224
+2025,North-West,Town,Road traffic incident,External,26,0.0303
+2025,North-West,Town,Road works / diversion,External,65,0.0758
+2025,North-West,Town,Severe weather,External,233,0.2719
+2025,North-West,Town,Traffic congestion,External,54,0.063
+2025,North-West,Town,Vehicle defect / breakdown,Internal,287,0.3349
+2025,South,City,Driver availability,Internal,1978,0.2475
+2025,South,City,Road traffic incident,External,288,0.036
+2025,South,City,Road works / diversion,External,695,0.087
+2025,South,City,Severe weather,External,1720,0.2152
+2025,South,City,Traffic congestion,External,1240,0.1552
+2025,South,City,Vehicle defect / breakdown,Internal,2070,0.259
+2025,South,Commuter,Driver availability,Internal,1008,0.2655
+2025,South,Commuter,Road traffic incident,External,86,0.0227
+2025,South,Commuter,Road works / diversion,External,407,0.1072
+2025,South,Commuter,Severe weather,External,774,0.2039
+2025,South,Commuter,Traffic congestion,External,430,0.1133
+2025,South,Commuter,Vehicle defect / breakdown,Internal,1091,0.2874
+2025,South,Regional,Driver availability,Internal,1232,0.213
+2025,South,Regional,Road traffic incident,External,237,0.041
+2025,South,Regional,Road works / diversion,External,499,0.0863
+2025,South,Regional,Severe weather,External,1458,0.2521
+2025,South,Regional,Traffic congestion,External,782,0.1352
+2025,South,Regional,Vehicle defect / breakdown,Internal,1575,0.2723
+2025,South-East,City,Driver availability,Internal,208,0.1454
+2025,South-East,City,Road traffic incident,External,80,0.0559
+2025,South-East,City,Road works / diversion,External,173,0.1209
+2025,South-East,City,Severe weather,External,345,0.2411
+2025,South-East,City,Traffic congestion,External,183,0.1279
+2025,South-East,City,Vehicle defect / breakdown,Internal,442,0.3089
+2025,South-East,Commuter,Driver availability,Internal,364,0.2206
+2025,South-East,Commuter,Road traffic incident,External,110,0.0667
+2025,South-East,Commuter,Road works / diversion,External,146,0.0885
+2025,South-East,Commuter,Severe weather,External,403,0.2442
+2025,South-East,Commuter,Traffic congestion,External,181,0.1097
+2025,South-East,Commuter,Vehicle defect / breakdown,Internal,446,0.2703
+2025,South-East,Regional,Driver availability,Internal,492,0.1178
+2025,South-East,Regional,Road traffic incident,External,339,0.0812
+2025,South-East,Regional,Road works / diversion,External,451,0.108
+2025,South-East,Regional,Severe weather,External,1246,0.2984
+2025,South-East,Regional,Traffic congestion,External,391,0.0937
+2025,South-East,Regional,Vehicle defect / breakdown,Internal,1256,0.3008
+2025,South-East,Town,Driver availability,Internal,135,0.1812
+2025,South-East,Town,Road traffic incident,External,49,0.0658
+2025,South-East,Town,Road works / diversion,External,41,0.055
+2025,South-East,Town,Severe weather,External,207,0.2779
+2025,South-East,Town,Traffic congestion,External,74,0.0993
+2025,South-East,Town,Vehicle defect / breakdown,Internal,239,0.3208
+2025,West,City,Driver availability,Internal,674,0.1945
+2025,West,City,Road traffic incident,External,167,0.0482
+2025,West,City,Road works / diversion,External,366,0.1056
+2025,West,City,Severe weather,External,746,0.2152
+2025,West,City,Traffic congestion,External,560,0.1616
+2025,West,City,Vehicle defect / breakdown,Internal,953,0.275
+2025,West,Commuter,Driver availability,Internal,936,0.2826
+2025,West,Commuter,Road traffic incident,External,79,0.0239
+2025,West,Commuter,Road works / diversion,External,367,0.1108
+2025,West,Commuter,Severe weather,External,639,0.1929
+2025,West,Commuter,Traffic congestion,External,291,0.0879
+2025,West,Commuter,Vehicle defect / breakdown,Internal,1000,0.3019
+2025,West,Regional,Driver availability,Internal,711,0.1757
+2025,West,Regional,Road traffic incident,External,446,0.1102
+2025,West,Regional,Road works / diversion,External,568,0.1404
+2025,West,Regional,Severe weather,External,831,0.2053
+2025,West,Regional,Traffic congestion,External,335,0.0828
+2025,West,Regional,Vehicle defect / breakdown,Internal,1156,0.2856
+2024,East,All,Driver availability,Internal,9148,0.3207
+2024,East,All,Road traffic incident,External,1296,0.0454
+2024,East,All,Road works / diversion,External,2701,0.0947
+2024,East,All,Severe weather,External,3092,0.1084
+2024,East,All,Traffic congestion,External,3810,0.1336
+2024,East,All,Vehicle defect / breakdown,Internal,8477,0.2972
+2024,Mid-West,All,Driver availability,Internal,3560,0.2592
+2024,Mid-West,All,Road traffic incident,External,907,0.0661
+2024,Mid-West,All,Road works / diversion,External,1733,0.1262
+2024,Mid-West,All,Severe weather,External,1287,0.0937
+2024,Mid-West,All,Traffic congestion,External,1685,0.1227
+2024,Mid-West,All,Vehicle defect / breakdown,Internal,4560,0.3321
+2024,North-West,All,Driver availability,Internal,2353,0.2693
+2024,North-West,All,Road traffic incident,External,785,0.0899
+2024,North-West,All,Road works / diversion,External,1084,0.1241
+2024,North-West,All,Severe weather,External,864,0.0989
+2024,North-West,All,Traffic congestion,External,785,0.0899
+2024,North-West,All,Vehicle defect / breakdown,Internal,2865,0.328
+2024,South,All,Driver availability,Internal,5016,0.2927
+2024,South,All,Road traffic incident,External,1007,0.0588
+2024,South,All,Road works / diversion,External,1695,0.0989
+2024,South,All,Severe weather,External,1644,0.0959
+2024,South,All,Traffic congestion,External,2346,0.1369
+2024,South,All,Vehicle defect / breakdown,Internal,5429,0.3168
+2024,South-East,All,Driver availability,Internal,2569,0.3101
+2024,South-East,All,Road traffic incident,External,452,0.0546
+2024,South-East,All,Road works / diversion,External,570,0.0688
+2024,South-East,All,Severe weather,External,667,0.0805
+2024,South-East,All,Traffic congestion,External,1024,0.1236
+2024,South-East,All,Vehicle defect / breakdown,Internal,3003,0.3625
+2024,West,All,Driver availability,Internal,1900,0.2071
+2024,West,All,Road traffic incident,External,511,0.0557
+2024,West,All,Road works / diversion,External,1364,0.1486
+2024,West,All,Severe weather,External,714,0.0778
+2024,West,All,Traffic congestion,External,1530,0.1667
+2024,West,All,Vehicle defect / breakdown,Internal,3157,0.344
+2025,East,All,Driver availability,Internal,8919,0.268
+2025,East,All,Road traffic incident,External,1523,0.0458
+2025,East,All,Road works / diversion,External,3472,0.1043
+2025,East,All,Severe weather,External,6252,0.1879
+2025,East,All,Traffic congestion,External,3762,0.113
+2025,East,All,Vehicle defect / breakdown,Internal,9353,0.281
+2025,Mid-West,All,Driver availability,Internal,3326,0.2166
+2025,Mid-West,All,Road traffic incident,External,894,0.0582
+2025,Mid-West,All,Road works / diversion,External,1099,0.0716
+2025,Mid-West,All,Severe weather,External,2988,0.1946
+2025,Mid-West,All,Traffic congestion,External,1685,0.1097
+2025,Mid-West,All,Vehicle defect / breakdown,Internal,5364,0.3493
+2025,North-West,All,Driver availability,Internal,2680,0.2501
+2025,North-West,All,Road traffic incident,External,382,0.0357
+2025,North-West,All,Road works / diversion,External,1353,0.1263
+2025,North-West,All,Severe weather,External,2254,0.2104
+2025,North-West,All,Traffic congestion,External,533,0.0497
+2025,North-West,All,Vehicle defect / breakdown,Internal,3512,0.3278
+2025,South,All,Driver availability,Internal,4218,0.2401
+2025,South,All,Road traffic incident,External,611,0.0348
+2025,South,All,Road works / diversion,External,1600,0.0911
+2025,South,All,Severe weather,External,3952,0.225
+2025,South,All,Traffic congestion,External,2451,0.1395
+2025,South,All,Vehicle defect / breakdown,Internal,4736,0.2696
+2025,South-East,All,Driver availability,Internal,1199,0.1499
+2025,South-East,All,Road traffic incident,External,578,0.0722
+2025,South-East,All,Road works / diversion,External,811,0.1014
+2025,South-East,All,Severe weather,External,2201,0.2751
+2025,South-East,All,Traffic congestion,External,828,0.1035
+2025,South-East,All,Vehicle defect / breakdown,Internal,2383,0.2979
+2025,West,All,Driver availability,Internal,2321,0.2144
+2025,West,All,Road traffic incident,External,692,0.0639
+2025,West,All,Road works / diversion,External,1301,0.1202
+2025,West,All,Severe weather,External,2216,0.2047
+2025,West,All,Traffic congestion,External,1186,0.1096
+2025,West,All,Vehicle defect / breakdown,Internal,3110,0.2873
+2024,All,City,Driver availability,Internal,3494,0.2633
+2024,All,City,Road traffic incident,External,678,0.0511
+2024,All,City,Road works / diversion,External,1630,0.1229
+2024,All,City,Severe weather,External,1247,0.094
+2024,All,City,Traffic congestion,External,2281,0.1719
+2024,All,City,Vehicle defect / breakdown,Internal,3938,0.2968
+2024,All,Commuter,Driver availability,Internal,9870,0.3003
+2024,All,Commuter,Road traffic incident,External,1617,0.0492
+2024,All,Commuter,Road works / diversion,External,3585,0.1091
+2024,All,Commuter,Severe weather,External,3183,0.0968
+2024,All,Commuter,Traffic congestion,External,4413,0.1342
+2024,All,Commuter,Vehicle defect / breakdown,Internal,10204,0.3104
+2024,All,Regional,Driver availability,Internal,10106,0.2817
+2024,All,Regional,Road traffic incident,External,2458,0.0685
+2024,All,Regional,Road works / diversion,External,3587,0.1
+2024,All,Regional,Severe weather,External,3502,0.0976
+2024,All,Regional,Traffic congestion,External,4117,0.1148
+2024,All,Regional,Vehicle defect / breakdown,Internal,12100,0.3373
+2024,All,Town,Driver availability,Internal,1076,0.3007
+2024,All,Town,Road traffic incident,External,205,0.0573
+2024,All,Town,Road works / diversion,External,344,0.0961
+2024,All,Town,Severe weather,External,335,0.0936
+2024,All,Town,Traffic congestion,External,368,0.1029
+2024,All,Town,Vehicle defect / breakdown,Internal,1250,0.3494
+2025,All,City,Driver availability,Internal,3310,0.2218
+2025,All,City,Road traffic incident,External,628,0.0421
+2025,All,City,Road works / diversion,External,1407,0.0943
+2025,All,City,Severe weather,External,3243,0.2173
+2025,All,City,Traffic congestion,External,2281,0.1528
+2025,All,City,Vehicle defect / breakdown,Internal,4056,0.2718
+2025,All,Commuter,Driver availability,Internal,9843,0.2611
+2025,All,Commuter,Road traffic incident,External,1668,0.0442
+2025,All,Commuter,Road works / diversion,External,4050,0.1074
+2025,All,Commuter,Severe weather,External,7045,0.1869
+2025,All,Commuter,Traffic congestion,External,4228,0.1121
+2025,All,Commuter,Vehicle defect / breakdown,Internal,10869,0.2883
+2025,All,Regional,Driver availability,Internal,8554,0.2185
+2025,All,Regional,Road traffic incident,External,2219,0.0567
+2025,All,Regional,Road works / diversion,External,3884,0.0992
+2025,All,Regional,Severe weather,External,8504,0.2172
+2025,All,Regional,Traffic congestion,External,3606,0.0921
+2025,All,Regional,Vehicle defect / breakdown,Internal,12390,0.3164
+2025,All,Town,Driver availability,Internal,956,0.2414
+2025,All,Town,Road traffic incident,External,163,0.0412
+2025,All,Town,Road works / diversion,External,295,0.0745
+2025,All,Town,Severe weather,External,1072,0.2706
+2025,All,Town,Traffic congestion,External,331,0.0836
+2025,All,Town,Vehicle defect / breakdown,Internal,1144,0.2888
+2024,All,All,Driver availability,Internal,24546,0.2868
+2024,All,All,Road traffic incident,External,4958,0.0579
+2024,All,All,Road works / diversion,External,9146,0.1069
+2024,All,All,Severe weather,External,8267,0.0966
+2024,All,All,Traffic congestion,External,11179,0.1306
+2024,All,All,Vehicle defect / breakdown,Internal,27491,0.3212
+2025,All,All,Driver availability,Internal,22663,0.2367
+2025,All,All,Road traffic incident,External,4679,0.0489
+2025,All,All,Road works / diversion,External,9637,0.1007
+2025,All,All,Severe weather,External,19863,0.2075
+2025,All,All,Traffic congestion,External,10445,0.1091
+2025,All,All,Vehicle defect / breakdown,Internal,28459,0.2972
+All,East,Commuter,Driver availability,Internal,12502,0.2846
+All,East,Commuter,Road traffic incident,External,2044,0.0465
+All,East,Commuter,Road works / diversion,External,4741,0.1079
+All,East,Commuter,Severe weather,External,6277,0.1429
+All,East,Commuter,Traffic congestion,External,5914,0.1347
+All,East,Commuter,Vehicle defect / breakdown,Internal,12443,0.2833
+All,East,Regional,Driver availability,Internal,4800,0.309
+All,East,Regional,Road traffic incident,External,718,0.0462
+All,East,Regional,Road works / diversion,External,1184,0.0762
+All,East,Regional,Severe weather,External,2631,0.1694
+All,East,Regional,Traffic congestion,External,1488,0.0958
+All,East,Regional,Vehicle defect / breakdown,Internal,4713,0.3034
+All,East,Town,Driver availability,Internal,765,0.3257
+All,East,Town,Road traffic incident,External,56,0.0238
+All,East,Town,Road works / diversion,External,248,0.1056
+All,East,Town,Severe weather,External,436,0.1856
+All,East,Town,Traffic congestion,External,170,0.0724
+All,East,Town,Vehicle defect / breakdown,Internal,674,0.2869
+All,Mid-West,City,Driver availability,Internal,954,0.2442
+All,Mid-West,City,Road traffic incident,External,162,0.0415
+All,Mid-West,City,Road works / diversion,External,401,0.1026
+All,Mid-West,City,Severe weather,External,614,0.1572
+All,Mid-West,City,Traffic congestion,External,616,0.1577
+All,Mid-West,City,Vehicle defect / breakdown,Internal,1160,0.2969
+All,Mid-West,Commuter,Driver availability,Internal,2520,0.258
+All,Mid-West,Commuter,Road traffic incident,External,550,0.0563
+All,Mid-West,Commuter,Road works / diversion,External,1019,0.1043
+All,Mid-West,Commuter,Severe weather,External,1461,0.1496
+All,Mid-West,Commuter,Traffic congestion,External,830,0.085
+All,Mid-West,Commuter,Vehicle defect / breakdown,Internal,3388,0.3468
+All,Mid-West,Regional,Driver availability,Internal,2912,0.2203
+All,Mid-West,Regional,Road traffic incident,External,948,0.0717
+All,Mid-West,Regional,Road works / diversion,External,1266,0.0958
+All,Mid-West,Regional,Severe weather,External,1756,0.1328
+All,Mid-West,Regional,Traffic congestion,External,1667,0.1261
+All,Mid-West,Regional,Vehicle defect / breakdown,Internal,4672,0.3534
+All,Mid-West,Town,Driver availability,Internal,500,0.2281
+All,Mid-West,Town,Road traffic incident,External,140,0.0639
+All,Mid-West,Town,Road works / diversion,External,146,0.0666
+All,Mid-West,Town,Severe weather,External,444,0.2026
+All,Mid-West,Town,Traffic congestion,External,257,0.1172
+All,Mid-West,Town,Vehicle defect / breakdown,Internal,705,0.3216
+All,North-West,Regional,Driver availability,Internal,4545,0.2547
+All,North-West,Regional,Road traffic incident,External,1107,0.062
+All,North-West,Regional,Road works / diversion,External,2294,0.1285
+All,North-West,Regional,Severe weather,External,2832,0.1587
+All,North-West,Regional,Traffic congestion,External,1215,0.0681
+All,North-West,Regional,Vehicle defect / breakdown,Internal,5855,0.328
+All,North-West,Town,Driver availability,Internal,488,0.3048
+All,North-West,Town,Road traffic incident,External,60,0.0375
+All,North-West,Town,Road works / diversion,External,143,0.0893
+All,North-West,Town,Severe weather,External,285,0.178
+All,North-West,Town,Traffic congestion,External,103,0.0643
+All,North-West,Town,Vehicle defect / breakdown,Internal,522,0.326
+All,South,City,Driver availability,Internal,3946,0.2597
+All,South,City,Road traffic incident,External,658,0.0433
+All,South,City,Road works / diversion,External,1605,0.1056
+All,South,City,Severe weather,External,2356,0.1551
+All,South,City,Traffic congestion,External,2413,0.1588
+All,South,City,Vehicle defect / breakdown,Internal,4214,0.2774
+All,South,Commuter,Driver availability,Internal,2208,0.2939
+All,South,Commuter,Road traffic incident,External,245,0.0326
+All,South,Commuter,Road works / diversion,External,767,0.1021
+All,South,Commuter,Severe weather,External,1116,0.1486
+All,South,Commuter,Traffic congestion,External,910,0.1211
+All,South,Commuter,Vehicle defect / breakdown,Internal,2266,0.3017
+All,South,Regional,Driver availability,Internal,3080,0.2567
+All,South,Regional,Road traffic incident,External,714,0.0595
+All,South,Regional,Road works / diversion,External,923,0.0769
+All,South,Regional,Severe weather,External,2123,0.1769
+All,South,Regional,Traffic congestion,External,1474,0.1228
+All,South,Regional,Vehicle defect / breakdown,Internal,3686,0.3072
+All,South-East,City,Driver availability,Internal,504,0.1977
+All,South-East,City,Road traffic incident,External,149,0.0585
+All,South-East,City,Road works / diversion,External,315,0.1236
+All,South-East,City,Severe weather,External,452,0.1773
+All,South-East,City,Traffic congestion,External,376,0.1475
+All,South-East,City,Vehicle defect / breakdown,Internal,753,0.2954
+All,South-East,Commuter,Driver availability,Internal,689,0.2228
+All,South-East,Commuter,Road traffic incident,External,239,0.0773
+All,South-East,Commuter,Road works / diversion,External,319,0.1031
+All,South-East,Commuter,Severe weather,External,562,0.1817
+All,South-East,Commuter,Traffic congestion,External,366,0.1183
+All,South-East,Commuter,Vehicle defect / breakdown,Internal,918,0.2968
+All,South-East,Regional,Driver availability,Internal,2296,0.2483
+All,South-East,Regional,Road traffic incident,External,531,0.0574
+All,South-East,Regional,Road works / diversion,External,644,0.0696
+All,South-East,Regional,Severe weather,External,1612,0.1743
+All,South-East,Regional,Traffic congestion,External,940,0.1017
+All,South-East,Regional,Vehicle defect / breakdown,Internal,3224,0.3487
+All,South-East,Town,Driver availability,Internal,279,0.1999
+All,South-East,Town,Road traffic incident,External,111,0.0795
+All,South-East,Town,Road works / diversion,External,102,0.0731
+All,South-East,Town,Severe weather,External,242,0.1734
+All,South-East,Town,Traffic congestion,External,170,0.1218
+All,South-East,Town,Vehicle defect / breakdown,Internal,492,0.3524
+All,West,City,Driver availability,Internal,1400,0.2139
+All,West,City,Road traffic incident,External,337,0.0515
+All,West,City,Road works / diversion,External,716,0.1094
+All,West,City,Severe weather,External,1067,0.163
+All,West,City,Traffic congestion,External,1157,0.1768
+All,West,City,Vehicle defect / breakdown,Internal,1868,0.2854
+All,West,Commuter,Driver availability,Internal,1794,0.2856
+All,West,Commuter,Road traffic incident,External,207,0.033
+All,West,Commuter,Road works / diversion,External,789,0.1256
+All,West,Commuter,Severe weather,External,812,0.1293
+All,West,Commuter,Traffic congestion,External,620,0.0987
+All,West,Commuter,Vehicle defect / breakdown,Internal,2059,0.3278
+All,West,Regional,Driver availability,Internal,1027,0.1431
+All,West,Regional,Road traffic incident,External,659,0.0918
+All,West,Regional,Road works / diversion,External,1160,0.1617
+All,West,Regional,Severe weather,External,1051,0.1465
+All,West,Regional,Traffic congestion,External,938,0.1307
+All,West,Regional,Vehicle defect / breakdown,Internal,2340,0.3261
+All,East,All,Driver availability,Internal,18067,0.2923
+All,East,All,Road traffic incident,External,2818,0.0456
+All,East,All,Road works / diversion,External,6173,0.0999
+All,East,All,Severe weather,External,9344,0.1512
+All,East,All,Traffic congestion,External,7572,0.1225
+All,East,All,Vehicle defect / breakdown,Internal,17830,0.2885
+All,Mid-West,All,Driver availability,Internal,6886,0.2367
+All,Mid-West,All,Road traffic incident,External,1801,0.0619
+All,Mid-West,All,Road works / diversion,External,2832,0.0974
+All,Mid-West,All,Severe weather,External,4276,0.147
+All,Mid-West,All,Traffic congestion,External,3370,0.1159
+All,Mid-West,All,Vehicle defect / breakdown,Internal,9924,0.3412
+All,North-West,All,Driver availability,Internal,5033,0.2588
+All,North-West,All,Road traffic incident,External,1167,0.06
+All,North-West,All,Road works / diversion,External,2437,0.1253
+All,North-West,All,Severe weather,External,3118,0.1603
+All,North-West,All,Traffic congestion,External,1318,0.0678
+All,North-West,All,Vehicle defect / breakdown,Internal,6377,0.3279
+All,South,All,Driver availability,Internal,9234,0.2661
+All,South,All,Road traffic incident,External,1617,0.0466
+All,South,All,Road works / diversion,External,3295,0.0949
+All,South,All,Severe weather,External,5595,0.1612
+All,South,All,Traffic congestion,External,4797,0.1382
+All,South,All,Vehicle defect / breakdown,Internal,10165,0.2929
+All,South-East,All,Driver availability,Internal,3768,0.2314
+All,South-East,All,Road traffic incident,External,1031,0.0633
+All,South-East,All,Road works / diversion,External,1380,0.0847
+All,South-East,All,Severe weather,External,2868,0.1761
+All,South-East,All,Traffic congestion,External,1852,0.1137
+All,South-East,All,Vehicle defect / breakdown,Internal,5386,0.3307
+All,West,All,Driver availability,Internal,4221,0.211
+All,West,All,Road traffic incident,External,1203,0.0601
+All,West,All,Road works / diversion,External,2665,0.1332
+All,West,All,Severe weather,External,2930,0.1465
+All,West,All,Traffic congestion,External,2715,0.1357
+All,West,All,Vehicle defect / breakdown,Internal,6267,0.3133
+All,All,City,Driver availability,Internal,6804,0.2413
+All,All,City,Road traffic incident,External,1307,0.0464
+All,All,City,Road works / diversion,External,3037,0.1077
+All,All,City,Severe weather,External,4490,0.1593
+All,All,City,Traffic congestion,External,4562,0.1618
+All,All,City,Vehicle defect / breakdown,Internal,7994,0.2835
+All,All,Commuter,Driver availability,Internal,19713,0.2793
+All,All,Commuter,Road traffic incident,External,3285,0.0465
+All,All,Commuter,Road works / diversion,External,7635,0.1082
+All,All,Commuter,Severe weather,External,10228,0.1449
+All,All,Commuter,Traffic congestion,External,8640,0.1224
+All,All,Commuter,Vehicle defect / breakdown,Internal,21073,0.2986
+All,All,Regional,Driver availability,Internal,18660,0.2487
+All,All,Regional,Road traffic incident,External,4677,0.0623
+All,All,Regional,Road works / diversion,External,7472,0.0996
+All,All,Regional,Severe weather,External,12005,0.16
+All,All,Regional,Traffic congestion,External,7722,0.1029
+All,All,Regional,Vehicle defect / breakdown,Internal,24490,0.3264
+All,All,Town,Driver availability,Internal,2032,0.2696
+All,All,Town,Road traffic incident,External,368,0.0488
+All,All,Town,Road works / diversion,External,639,0.0848
+All,All,Town,Severe weather,External,1407,0.1867
+All,All,Town,Traffic congestion,External,699,0.0927
+All,All,Town,Vehicle defect / breakdown,Internal,2393,0.3175
+All,All,All,Driver availability,Internal,47209,0.2603
+All,All,All,Road traffic incident,External,9636,0.0531
+All,All,All,Road works / diversion,External,18783,0.1036
+All,All,All,Severe weather,External,28130,0.1551
+All,All,All,Traffic congestion,External,21624,0.1193
+All,All,All,Vehicle defect / breakdown,Internal,55950,0.3086

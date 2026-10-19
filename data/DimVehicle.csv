@@ -1,0 +1,167 @@
+VehicleKey,FleetNumber,VehicleType,FuelType,YearIntroduced,HomeDepot,AllocatedService
+1,FV101,Double-deck,Diesel,2010,Cork City,City
+2,FV102,Double-deck,Diesel,2019,Cork City,City
+3,FV103,Double-deck,Diesel,2019,Cork City,City
+4,FV104,Single-deck,Diesel,2015,Cork City,City
+5,FV105,Single-deck,Battery electric,2025,Cork City,City
+6,FV106,Single-deck,Diesel,2012,Cork City,City
+7,FV107,Double-deck,Diesel,2012,Cork City,City
+8,FV108,Single-deck,Battery electric,2025,Cork City,City
+9,FV109,Single-deck,Diesel,2019,Cork City,City
+10,FV110,Double-deck,Diesel,2021,Cork City,City
+11,FV111,Single-deck,Battery electric,2024,Cork City,City
+12,FV112,Double-deck,Diesel,2016,Cork City,City
+13,FV113,Double-deck,Diesel,2012,Cork City,City
+14,FV114,Double-deck,Diesel,2013,Cork City,City
+15,FV115,Double-deck,Diesel,2014,Cork City,City
+16,FV116,Double-deck,Diesel,2019,Cork City,City
+17,FV117,Double-deck,Diesel,2024,Cork City,City
+18,FV118,Double-deck,Diesel,2015,Cork City,City
+19,FV119,Single-deck,Diesel,2014,Cork City,City
+20,FV120,Double-deck,Diesel,2016,Cork City,City
+21,FV121,Double-deck,Diesel,2024,Cork City,City
+22,FV122,Single-deck,Diesel,2023,Cork City,City
+23,FV123,Single-deck,Diesel,2013,Cork City,City
+24,FV124,Coach,Diesel,2015,Cork City,Commuter
+25,FV125,Coach,Diesel,2018,Cork City,Commuter
+26,FV126,Coach,Diesel,2016,Cork City,Commuter
+27,FV127,Double-deck,Diesel,2016,Cork City,Commuter
+28,FV128,Double-deck,Diesel,2020,Cork City,Commuter
+29,FV129,Double-deck,Diesel,2011,Cork City,Commuter
+30,FV130,Double-deck,Diesel,2020,Cork City,Commuter
+31,FV131,Double-deck,Diesel,2017,Cork City,Commuter
+32,FV132,Coach,Diesel,2018,Cork City,Regional
+33,FV133,Coach,Diesel,2024,Cork City,Regional
+34,FV134,Coach,Diesel,2018,Cork City,Regional
+35,FV135,Coach,Diesel,2015,Cork City,Regional
+36,FV136,Coach,Diesel,2016,Cork City,Regional
+37,FV137,Double-deck,Diesel,2010,Drogheda,Commuter
+38,FV138,Coach,Diesel,2020,Drogheda,Commuter
+39,FV139,Double-deck,Diesel,2021,Drogheda,Commuter
+40,FV140,Coach,Diesel,2010,Drogheda,Commuter
+41,FV141,Coach,Diesel,2021,Drogheda,Commuter
+42,FV142,Double-deck,Diesel,2014,Drogheda,Commuter
+43,FV143,Double-deck,Diesel,2012,Drogheda,Commuter
+44,FV144,Coach,Diesel,2023,Drogheda,Commuter
+45,FV145,Double-deck,Diesel,2013,Drogheda,Commuter
+46,FV146,Coach,Diesel,2015,Drogheda,Regional
+47,FV147,Coach,Diesel,2015,Drogheda,Regional
+48,FV148,Coach,Diesel,2018,Drogheda,Regional
+49,FV149,Coach,Diesel,2017,Drogheda,Regional
+50,FV150,Coach,Diesel,2024,Drogheda,Regional
+51,FV151,Coach,Diesel,2014,Drogheda,Regional
+52,FV152,Single-deck,Hybrid,2012,Drogheda,Town
+53,FV153,Single-deck,Diesel,2010,Drogheda,Town
+54,FV154,Single-deck,Diesel,2014,Drogheda,Town
+55,FV155,Single-deck,Hybrid,2010,Drogheda,Town
+56,FV156,Single-deck,Diesel,2017,Drogheda,Town
+57,FV157,Single-deck,Diesel,2022,Drogheda,Town
+58,FV158,Single-deck,Diesel,2019,Drogheda,Town
+59,FV159,Single-deck,Hybrid,2016,Ennis,Town
+60,FV160,Single-deck,Hybrid,2018,Ennis,Town
+61,FV161,Single-deck,Hybrid,2012,Ennis,Town
+62,FV162,Single-deck,Hybrid,2012,Ennis,Town
+63,FV163,Single-deck,Hybrid,2018,Ennis,Town
+64,FV164,Single-deck,Hybrid,2019,Ennis,Town
+65,FV165,Single-deck,Diesel,2021,Ennis,Town
+66,FV166,Double-deck,Diesel,2023,Galway,City
+67,FV167,Single-deck,Diesel,2021,Galway,City
+68,FV168,Double-deck,Diesel,2022,Galway,City
+69,FV169,Single-deck,Diesel,2012,Galway,City
+70,FV170,Single-deck,Diesel,2016,Galway,City
+71,FV171,Double-deck,Diesel,2014,Galway,City
+72,FV172,Single-deck,Battery electric,2024,Galway,City
+73,FV173,Single-deck,Diesel,2024,Galway,City
+74,FV174,Single-deck,Diesel,2014,Galway,City
+75,FV175,Double-deck,Diesel,2018,Galway,City
+76,FV176,Double-deck,Diesel,2020,Galway,City
+77,FV177,Double-deck,Diesel,2015,Galway,City
+78,FV178,Double-deck,Diesel,2010,Galway,City
+79,FV179,Single-deck,Diesel,2016,Galway,City
+80,FV180,Double-deck,Diesel,2013,Galway,City
+81,FV181,Single-deck,Diesel,2024,Galway,City
+82,FV182,Double-deck,Diesel,2023,Galway,Commuter
+83,FV183,Double-deck,Diesel,2022,Galway,Commuter
+84,FV184,Double-deck,Diesel,2014,Galway,Commuter
+85,FV185,Coach,Diesel,2014,Galway,Commuter
+86,FV186,Double-deck,Diesel,2022,Galway,Commuter
+87,FV187,Coach,Diesel,2012,Galway,Commuter
+88,FV188,Coach,Diesel,2024,Galway,Commuter
+89,FV189,Coach,Diesel,2017,Galway,Regional
+90,FV190,Coach,Diesel,2023,Galway,Regional
+91,FV191,Coach,Diesel,2020,Galway,Regional
+92,FV192,Coach,Diesel,2020,Galway,Regional
+93,FV193,Single-deck,Diesel,2020,Kilkenny,Town
+94,FV194,Single-deck,Hybrid,2020,Kilkenny,Town
+95,FV195,Single-deck,Diesel,2012,Kilkenny,Town
+96,FV196,Single-deck,Diesel,2011,Kilkenny,Town
+97,FV197,Single-deck,Hybrid,2013,Kilkenny,Town
+98,FV198,Single-deck,Diesel,2013,Kilkenny,Town
+99,FV199,Single-deck,Diesel,2019,Kilkenny,Town
+100,FV200,Coach,Diesel,2011,Letterkenny,Regional
+101,FV201,Coach,Diesel,2015,Letterkenny,Regional
+102,FV202,Coach,Diesel,2014,Letterkenny,Regional
+103,FV203,Coach,Diesel,2020,Letterkenny,Regional
+104,FV204,Coach,Diesel,2020,Letterkenny,Regional
+105,FV205,Single-deck,Diesel,2013,Limerick,City
+106,FV206,Double-deck,Diesel,2016,Limerick,City
+107,FV207,Single-deck,Diesel,2022,Limerick,City
+108,FV208,Double-deck,Diesel,2018,Limerick,City
+109,FV209,Double-deck,Diesel,2017,Limerick,City
+110,FV210,Double-deck,Diesel,2021,Limerick,City
+111,FV211,Double-deck,Diesel,2018,Limerick,City
+112,FV212,Double-deck,Diesel,2024,Limerick,City
+113,FV213,Double-deck,Diesel,2020,Limerick,City
+114,FV214,Double-deck,Diesel,2016,Limerick,Commuter
+115,FV215,Double-deck,Diesel,2016,Limerick,Commuter
+116,FV216,Coach,Diesel,2018,Limerick,Commuter
+117,FV217,Coach,Diesel,2018,Limerick,Commuter
+118,FV218,Coach,Diesel,2011,Limerick,Commuter
+119,FV219,Double-deck,Diesel,2014,Limerick,Commuter
+120,FV220,Double-deck,Diesel,2022,Limerick,Commuter
+121,FV221,Coach,Diesel,2012,Limerick,Regional
+122,FV222,Coach,Diesel,2020,Limerick,Regional
+123,FV223,Coach,Diesel,2020,Limerick,Regional
+124,FV224,Coach,Diesel,2014,Limerick,Regional
+125,FV225,Coach,Diesel,2020,Limerick,Regional
+126,FV226,Coach,Diesel,2011,Navan,Commuter
+127,FV227,Double-deck,Diesel,2018,Navan,Commuter
+128,FV228,Coach,Diesel,2012,Navan,Commuter
+129,FV229,Double-deck,Diesel,2021,Navan,Commuter
+130,FV230,Coach,Diesel,2018,Navan,Commuter
+131,FV231,Double-deck,Diesel,2016,Navan,Commuter
+132,FV232,Double-deck,Diesel,2023,Navan,Commuter
+133,FV233,Double-deck,Diesel,2024,Navan,Commuter
+134,FV234,Coach,Diesel,2015,Navan,Commuter
+135,FV235,Coach,Diesel,2010,Sligo,Regional
+136,FV236,Coach,Diesel,2013,Sligo,Regional
+137,FV237,Coach,Diesel,2019,Sligo,Regional
+138,FV238,Coach,Diesel,2021,Sligo,Regional
+139,FV239,Single-deck,Diesel,2022,Sligo,Town
+140,FV240,Single-deck,Hybrid,2023,Sligo,Town
+141,FV241,Single-deck,Diesel,2014,Sligo,Town
+142,FV242,Single-deck,Diesel,2018,Sligo,Town
+143,FV243,Single-deck,Diesel,2020,Sligo,Town
+144,FV244,Single-deck,Diesel,2010,Sligo,Town
+145,FV245,Single-deck,Diesel,2015,Sligo,Town
+146,FV246,Single-deck,Diesel,2023,Waterford,City
+147,FV247,Double-deck,Diesel,2012,Waterford,City
+148,FV248,Double-deck,Diesel,2016,Waterford,City
+149,FV249,Single-deck,Diesel,2023,Waterford,City
+150,FV250,Double-deck,Diesel,2017,Waterford,City
+151,FV251,Double-deck,Diesel,2017,Waterford,City
+152,FV252,Single-deck,Battery electric,2024,Waterford,City
+153,FV253,Single-deck,Diesel,2014,Waterford,City
+154,FV254,Double-deck,Diesel,2023,Waterford,Commuter
+155,FV255,Double-deck,Diesel,2022,Waterford,Commuter
+156,FV256,Coach,Diesel,2022,Waterford,Commuter
+157,FV257,Double-deck,Diesel,2017,Waterford,Commuter
+158,FV258,Double-deck,Diesel,2015,Waterford,Commuter
+159,FV259,Coach,Diesel,2020,Waterford,Commuter
+160,FV260,Double-deck,Diesel,2015,Waterford,Commuter
+161,FV261,Coach,Diesel,2010,Waterford,Commuter
+162,FV262,Coach,Diesel,2024,Waterford,Regional
+163,FV263,Coach,Diesel,2018,Waterford,Regional
+164,FV264,Coach,Diesel,2012,Waterford,Regional
+165,FV265,Coach,Diesel,2014,Waterford,Regional
+166,FV266,Coach,Diesel,2011,Waterford,Regional

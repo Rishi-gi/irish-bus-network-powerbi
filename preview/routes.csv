@@ -1,0 +1,73 @@
+Year,RouteCode,RouteName,Region,ServiceType,Journeys,LostKm,LostKmPct,PunctualityPct,AVLTrackingPct,Passengers
+2024,DM01,Drogheda – Dublin City,East,Commuter,8404,10569,0.0242,0.8025,0.9866,386849
+2024,DM02,Navan – Dublin City,East,Commuter,8404,9331,0.0227,0.8094,0.9867,386728
+2024,DR04,Dundalk – Dublin Airport,East,Regional,4316,7504,0.0232,0.7357,0.9842,130839
+2024,DT03,Drogheda Town Service,East,Town,6056,1119,0.0205,0.9459,0.9862,105784
+2024,EC01,Waterford City – Ardkeen,South-East,City,7900,1118,0.0177,0.9455,0.9905,314830
+2024,EM04,Waterford – Tramore,South-East,Commuter,6664,1443,0.0167,0.9323,0.9882,289838
+2024,ER03,Waterford – Wexford,South-East,Regional,3080,5073,0.0201,0.9006,0.9859,92850
+2024,ET02,Kilkenny Town Service,South-East,Town,6056,651,0.0119,0.9078,0.9904,106107
+2024,MC01,Limerick City – Castletroy,Mid-West,City,9012,1869,0.023,0.9424,0.989,356518
+2024,MM04,Limerick – Nenagh,Mid-West,Commuter,5428,4845,0.0223,0.9151,0.9865,240521
+2024,MR03,Limerick – Tralee,Mid-West,Regional,3080,5955,0.0186,0.8723,0.9882,93207
+2024,MT02,Ennis Town Service,Mid-West,Town,6056,1064,0.0176,0.9151,0.9901,105683
+2024,NR02,Sligo – Letterkenny,North-West,Regional,2472,5159,0.0181,0.9316,0.9429,72583
+2024,NR03,Letterkenny – Derry Road Link,North-West,Regional,3584,2832,0.022,0.9267,0.9533,114412
+2024,NT01,Sligo Town Service,North-West,Town,5428,744,0.0171,0.8981,0.9671,96597
+2024,SC01,Cork City Centre – Ballincollig,South,City,9640,2756,0.022,0.9294,0.9857,388953
+2024,SC02,Cork City Centre – Douglas,South,City,9640,2199,0.0253,0.9332,0.9897,387038
+2024,SC03,Cork Kent Station – Mahon Point,South,City,8404,2248,0.0243,0.9374,0.9867,323378
+2024,SM05,Cork – Midleton,South,Commuter,7168,3715,0.0216,0.8842,0.9895,322561
+2024,SR04,Cork – Killarney,South,Regional,3080,6218,0.0229,0.8215,0.9852,93095
+2024,WC01,Galway City – Knocknacarra,West,City,9012,1793,0.0199,0.9403,0.988,359560
+2024,WC02,Galway City – Ballybrit,West,City,8404,1286,0.0191,0.9417,0.9885,324799
+2024,WM04,Galway – Athenry,West,Commuter,6056,2969,0.0189,0.9148,0.989,271443
+2024,WR03,Galway – Clifden,West,Regional,2472,3128,0.016,0.8649,0.9857,72897
+2025,DM01,Drogheda – Dublin City,East,Commuter,8376,12756,0.0293,0.8092,0.9874,382582
+2025,DM02,Navan – Dublin City,East,Commuter,8376,11266,0.0274,0.8074,0.9854,383691
+2025,DR04,Dundalk – Dublin Airport,East,Regional,4302,8030,0.0249,0.7369,0.9842,130299
+2025,DT03,Drogheda Town Service,East,Town,6036,1230,0.0226,0.9451,0.9865,104487
+2025,EC01,Waterford City – Ardkeen,South-East,City,7874,1431,0.0227,0.9408,0.9898,312488
+2025,EM04,Waterford – Tramore,South-East,Commuter,6642,1650,0.0191,0.9318,0.9889,287615
+2025,ER03,Waterford – Wexford,South-East,Regional,3070,4175,0.0166,0.9001,0.9862,92900
+2025,ET02,Kilkenny Town Service,South-East,Town,6036,745,0.0137,0.9149,0.9883,105755
+2025,MC01,Limerick City – Castletroy,Mid-West,City,8982,2038,0.0252,0.937,0.9882,354271
+2025,MM04,Limerick – Nenagh,Mid-West,Commuter,5410,4922,0.0227,0.9176,0.9859,240156
+2025,MR03,Limerick – Tralee,Mid-West,Regional,3070,7266,0.0228,0.8702,0.9855,92164
+2025,MT02,Ennis Town Service,Mid-West,Town,6036,1128,0.0187,0.9238,0.9916,105208
+2025,NR02,Sligo – Letterkenny,North-West,Regional,2464,6823,0.0241,0.9339,0.9728,71618
+2025,NR03,Letterkenny – Derry Road Link,North-West,Regional,3572,3034,0.0236,0.9151,0.9716,113478
+2025,NT01,Sligo Town Service,North-West,Town,5410,857,0.0198,0.9005,0.9782,95940
+2025,SC01,Cork City Centre – Ballincollig,South,City,9608,3117,0.025,0.9304,0.9882,385675
+2025,SC02,Cork City Centre – Douglas,South,City,9608,2455,0.0284,0.9323,0.9895,384762
+2025,SC03,Cork Kent Station – Mahon Point,South,City,8376,2417,0.0262,0.942,0.9885,321117
+2025,SM05,Cork – Midleton,South,Commuter,7144,3796,0.0221,0.8746,0.9918,320277
+2025,SR04,Cork – Killarney,South,Regional,3070,5782,0.0214,0.8296,0.9871,92338
+2025,WC01,Galway City – Knocknacarra,West,City,8982,1879,0.0209,0.941,0.9874,356811
+2025,WC02,Galway City – Ballybrit,West,City,8376,1588,0.0237,0.9441,0.9886,322521
+2025,WM04,Galway – Athenry,West,Commuter,6036,3312,0.0211,0.907,0.9891,269255
+2025,WR03,Galway – Clifden,West,Regional,2464,4046,0.0208,0.8731,0.9844,72163
+All,DM01,Drogheda – Dublin City,East,Commuter,16780,23325,0.0267,0.8058,0.987,769431
+All,DM02,Navan – Dublin City,East,Commuter,16780,20597,0.025,0.8084,0.9861,770419
+All,DR04,Dundalk – Dublin Airport,East,Regional,8618,15534,0.024,0.7363,0.9842,261138
+All,DT03,Drogheda Town Service,East,Town,12092,2349,0.0216,0.9455,0.9864,210271
+All,EC01,Waterford City – Ardkeen,South-East,City,15774,2550,0.0202,0.9431,0.9902,627318
+All,EM04,Waterford – Tramore,South-East,Commuter,13306,3093,0.0179,0.9321,0.9885,577453
+All,ER03,Waterford – Wexford,South-East,Regional,6150,9248,0.0183,0.9003,0.986,185750
+All,ET02,Kilkenny Town Service,South-East,Town,12092,1396,0.0128,0.9113,0.9893,211862
+All,MC01,Limerick City – Castletroy,Mid-West,City,17994,3907,0.0241,0.9397,0.9886,710789
+All,MM04,Limerick – Nenagh,Mid-West,Commuter,10838,9767,0.0225,0.9164,0.9862,480677
+All,MR03,Limerick – Tralee,Mid-West,Regional,6150,13221,0.0207,0.8712,0.9868,185371
+All,MT02,Ennis Town Service,Mid-West,Town,12092,2192,0.0181,0.9194,0.9909,210891
+All,NR02,Sligo – Letterkenny,North-West,Regional,4936,11982,0.0211,0.9327,0.9577,144201
+All,NR03,Letterkenny – Derry Road Link,North-West,Regional,7156,5866,0.0228,0.9209,0.9624,227890
+All,NT01,Sligo Town Service,North-West,Town,10838,1601,0.0185,0.8993,0.9727,192537
+All,SC01,Cork City Centre – Ballincollig,South,City,19248,5873,0.0235,0.9299,0.9869,774628
+All,SC02,Cork City Centre – Douglas,South,City,19248,4654,0.0269,0.9327,0.9896,771800
+All,SC03,Cork Kent Station – Mahon Point,South,City,16780,4665,0.0253,0.9397,0.9876,644495
+All,SM05,Cork – Midleton,South,Commuter,14312,7511,0.0219,0.8794,0.9906,642838
+All,SR04,Cork – Killarney,South,Regional,6150,12001,0.0222,0.8255,0.9861,185433
+All,WC01,Galway City – Knocknacarra,West,City,17994,3672,0.0204,0.9406,0.9877,716371
+All,WC02,Galway City – Ballybrit,West,City,16780,2873,0.0214,0.9429,0.9885,647320
+All,WM04,Galway – Athenry,West,Commuter,12092,6281,0.02,0.9109,0.989,540698
+All,WR03,Galway – Clifden,West,Regional,4936,7174,0.0184,0.869,0.9851,145060

@@ -1,0 +1,228 @@
+// =====================================================================
+//  Irish Regional Bus Network Performance – DAX (Data Analysis Expressions) measures
+//  Create an empty table called _Measures (Home > Enter data > OK), then add
+//  each measure below with  Modeling > New measure  while _Measures is selected.
+//  The text before "=" is the measure name. Suggested format is in [brackets].
+// =====================================================================
+
+
+// ---------------------------------------------------------------------
+//  1. BASE MEASURES
+// ---------------------------------------------------------------------
+
+Scheduled Journeys =                                    // [Whole number, thousands separator]
+COUNTROWS ( FactJourney )
+
+Operated Journeys =                                     // [Whole number]
+CALCULATE ( [Scheduled Journeys], DimJourneyStatus[IsOperated] = TRUE () )
+
+Journeys Not Operated =                                 // [Whole number]
+CALCULATE ( [Scheduled Journeys], DimJourneyStatus[StatusKey] = 4 )
+
+Journeys Operated % =                                   // [Percentage, 1 decimal]
+DIVIDE ( [Operated Journeys], [Scheduled Journeys] )
+
+Scheduled Km =                                          // [Whole number]
+SUM ( FactJourney[ScheduledKm] )
+
+Operated Km =                                           // [Whole number]
+SUM ( FactJourney[OperatedKm] )
+
+Lost Km =                                               // [Whole number]
+SUM ( FactJourney[LostKm] )
+
+Lost Km % =                                             // [Percentage, 2 decimals]
+DIVIDE ( [Lost Km], [Scheduled Km] )
+
+Km Delivered % =                                        // [Percentage, 2 decimals]
+DIVIDE ( [Operated Km], [Scheduled Km] )
+
+Lost Km per 1,000 Scheduled Km =                        // [Decimal, 1 decimal]
+DIVIDE ( [Lost Km], [Scheduled Km] ) * 1000
+
+Passengers =                                            // [Whole number]
+SUM ( FactJourney[Passengers] )
+
+Passengers per Operated Journey =                       // [Decimal, 1 decimal]
+DIVIDE ( [Passengers], [Operated Journeys] )
+
+
+// ---------------------------------------------------------------------
+//  2. PUNCTUALITY
+//  Project rule: a departure is "on time" if it left between 1 minute early
+//  and 5 minutes late (inclusive). Only journeys with an AVL (Automatic
+//  Vehicle Location) departure record count, so non-tracking and not-operated
+//  journeys are excluded automatically (their delay value is blank).
+// ---------------------------------------------------------------------
+
+Tracked Departures =                                    // [Whole number]
+COUNT ( FactJourney[DepartureDelayMins] )
+
+On-Time Departures =                                    // [Whole number]
+CALCULATE (
+    COUNT ( FactJourney[DepartureDelayMins] ),
+    FactJourney[DepartureDelayMins] >= -1,
+    FactJourney[DepartureDelayMins] <= 5
+)
+
+Late Departures =                                       // [Whole number]
+CALCULATE ( COUNT ( FactJourney[DepartureDelayMins] ), FactJourney[DepartureDelayMins] > 5 )
+
+Early Departures =                                      // [Whole number]
+CALCULATE ( COUNT ( FactJourney[DepartureDelayMins] ), FactJourney[DepartureDelayMins] < -1 )
+
+Punctuality % =                                         // [Percentage, 1 decimal]
+DIVIDE ( [On-Time Departures], [Tracked Departures] )
+
+Average Departure Delay (mins) =                        // [Decimal, 1 decimal]
+AVERAGE ( FactJourney[DepartureDelayMins] )
+
+
+// ---------------------------------------------------------------------
+//  3. DATA QUALITY (AVL / GPS tracking)
+// ---------------------------------------------------------------------
+
+Non-Tracking Journeys =                                 // [Whole number]
+CALCULATE ( [Scheduled Journeys], DimJourneyStatus[StatusKey] = 5 )
+
+AVL Tracking Rate % =                                   // [Percentage, 1 decimal]
+DIVIDE (
+    CALCULATE ( [Operated Journeys], FactJourney[IsTracked] = TRUE () ),
+    [Operated Journeys]
+)
+
+
+// ---------------------------------------------------------------------
+//  4. TARGETS AND RAG (Red / Amber / Green) STATUS
+// ---------------------------------------------------------------------
+
+Target Punctuality % = 0.90                             // [Percentage, 0 decimals]
+
+Target Lost Km % = 0.02                                 // [Percentage, 1 decimal]
+
+Target AVL Tracking % = 0.98                            // [Percentage, 0 decimals]
+
+Punctuality vs Target (pp) =                            // [Percentage, 1 decimal] – read as percentage points
+[Punctuality %] - [Target Punctuality %]
+
+Lost Km % vs Target (pp) =                              // [Percentage, 2 decimals]
+[Lost Km %] - [Target Lost Km %]
+
+Punctuality RAG Colour =                                // use in Conditional formatting > Field value
+SWITCH (
+    TRUE (),
+    ISBLANK ( [Punctuality %] ), BLANK (),
+    [Punctuality %] >= [Target Punctuality %], "#1E8E3E",
+    [Punctuality %] >= [Target Punctuality %] - 0.02, "#E8A33D",
+    "#C5221F"
+)
+
+Lost Km RAG Colour =                                    // lower is better
+SWITCH (
+    TRUE (),
+    ISBLANK ( [Lost Km %] ), BLANK (),
+    [Lost Km %] <= [Target Lost Km %], "#1E8E3E",
+    [Lost Km %] <= [Target Lost Km %] * 1.25, "#E8A33D",
+    "#C5221F"
+)
+
+Lost Km Status =
+IF ( [Lost Km %] <= [Target Lost Km %], "On target", "Above target" )
+
+
+// ---------------------------------------------------------------------
+//  5. TIME INTELLIGENCE
+//  Requires DimDate to be marked as the date table
+//  (Table tools > Mark as date table > Date column = Date).
+// ---------------------------------------------------------------------
+
+Lost Km PM =                                            // previous month
+CALCULATE ( [Lost Km], DATEADD ( DimDate[Date], -1, MONTH ) )
+
+Lost Km MoM % =                                         // month-on-month change [Percentage, 1 decimal]
+VAR CurrentKm  = [Lost Km]
+VAR PreviousKm = [Lost Km PM]
+RETURN
+    IF ( NOT ISBLANK ( PreviousKm ), DIVIDE ( CurrentKm - PreviousKm, PreviousKm ) )
+
+Punctuality % PM =
+CALCULATE ( [Punctuality %], DATEADD ( DimDate[Date], -1, MONTH ) )
+
+Punctuality MoM Change (pp) =                           // [Percentage, 1 decimal]
+IF ( NOT ISBLANK ( [Punctuality % PM] ), [Punctuality %] - [Punctuality % PM] )
+
+Lost Km % PY =                                          // same period last year
+CALCULATE ( [Lost Km %], SAMEPERIODLASTYEAR ( DimDate[Date] ) )
+
+Lost Km % YoY Change (pp) =                             // year-on-year [Percentage, 2 decimals]
+IF ( NOT ISBLANK ( [Lost Km % PY] ), [Lost Km %] - [Lost Km % PY] )
+
+Lost Km YTD =                                           // year to date
+TOTALYTD ( [Lost Km], DimDate[Date] )
+
+Lost Km % Rolling 3M =                                  // smooths one-off events such as storms
+VAR Window = DATESINPERIOD ( DimDate[Date], MAX ( DimDate[Date] ), -3, MONTH )
+RETURN
+    DIVIDE ( CALCULATE ( [Lost Km], Window ), CALCULATE ( [Scheduled Km], Window ) )
+
+
+// ---------------------------------------------------------------------
+//  6. RANKING, SHARE AND ROOT CAUSE
+// ---------------------------------------------------------------------
+
+Route Rank by Lost Km =
+IF (
+    ISINSCOPE ( DimRoute[RouteName] ),
+    RANKX ( ALLSELECTED ( DimRoute[RouteName] ), [Lost Km], , DESC, DENSE )
+)
+
+Share of Lost Km % =                                    // share within the visible causes
+DIVIDE ( [Lost Km], CALCULATE ( [Lost Km], ALLSELECTED ( DimLostKmCause ) ) )
+
+Internal Lost Km =                                      // causes the operator controls
+CALCULATE ( [Lost Km], DimLostKmCause[CauseCategory] = "Internal" )
+
+Internal Share of Lost Km % =
+DIVIDE ( [Internal Lost Km], [Lost Km] )
+
+Breakdown Lost Km per 1,000 Km =                        // vehicle defects only, per 1,000 scheduled km
+// The cause filter goes inside CALCULATE on the numerator only, so the
+// denominator still counts ALL scheduled km (fair comparison by vehicle age).
+DIVIDE (
+    CALCULATE ( [Lost Km], DimLostKmCause[CauseKey] = 2 ),
+    [Scheduled Km]
+) * 1000
+
+Top Cause of Lost Km =
+VAR CauseTable =
+    ADDCOLUMNS ( VALUES ( DimLostKmCause[Cause] ), "@LostKm", [Lost Km] )
+VAR TopCause =
+    TOPN ( 1, FILTER ( CauseTable, [@LostKm] > 0 ), [@LostKm], DESC )
+RETURN
+    MAXX ( TopCause, DimLostKmCause[Cause] )
+
+
+// ---------------------------------------------------------------------
+//  7. DYNAMIC TEXT (titles, RLS check, MI commentary)
+// ---------------------------------------------------------------------
+
+Selected Regions Text =
+"Regions: "
+    & CONCATENATEX ( VALUES ( DimRoute[Region] ), DimRoute[Region], ", ", DimRoute[Region], ASC )
+
+Period Text =
+FORMAT ( MIN ( DimDate[Date] ), "d mmm yyyy" ) & " – " & FORMAT ( MAX ( DimDate[Date] ), "d mmm yyyy" )
+
+Current User =                                          // shows who RLS thinks you are
+USERPRINCIPALNAME ()
+
+MI Commentary =
+VAR MonthLabel = FORMAT ( MAX ( DimDate[MonthStart] ), "mmmm yyyy" )
+RETURN
+    MonthLabel & ": "
+        & FORMAT ( [Lost Km], "#,0" ) & " km lost ("
+        & FORMAT ( [Lost Km %], "0.00%" ) & " of scheduled; target "
+        & FORMAT ( [Target Lost Km %], "0.0%" ) & "). Punctuality "
+        & FORMAT ( [Punctuality %], "0.0%" ) & " against a "
+        & FORMAT ( [Target Punctuality %], "0%" ) & " target. Largest cause of lost km: "
+        & COALESCE ( [Top Cause of Lost Km], "none" ) & "."

@@ -1,0 +1,25 @@
+RouteKey,RouteCode,RouteName,ServiceType,Depot,Region,KmPerTrip,WeekdayTripsPerDirection
+1,SC01,Cork City Centre – Ballincollig,City,Cork City,South,13,16
+2,SC02,Cork City Centre – Douglas,City,Cork City,South,9,16
+3,SC03,Cork Kent Station – Mahon Point,City,Cork City,South,11,14
+4,SR04,Cork – Killarney,Regional,Cork City,South,88,5
+5,SM05,Cork – Midleton,Commuter,Cork City,South,24,12
+6,WC01,Galway City – Knocknacarra,City,Galway,West,10,15
+7,WC02,Galway City – Ballybrit,City,Galway,West,8,14
+8,WR03,Galway – Clifden,Regional,Galway,West,79,4
+9,WM04,Galway – Athenry,Commuter,Galway,West,26,10
+10,MC01,Limerick City – Castletroy,City,Limerick,Mid-West,9,15
+11,MT02,Ennis Town Service,Town,Ennis,Mid-West,10,10
+12,MR03,Limerick – Tralee,Regional,Limerick,Mid-West,104,5
+13,MM04,Limerick – Nenagh,Commuter,Limerick,Mid-West,40,9
+14,EC01,Waterford City – Ardkeen,City,Waterford,South-East,8,13
+15,ET02,Kilkenny Town Service,Town,Kilkenny,South-East,9,10
+16,ER03,Waterford – Wexford,Regional,Waterford,South-East,82,5
+17,EM04,Waterford – Tramore,Commuter,Waterford,South-East,13,11
+18,NT01,Sligo Town Service,Town,Sligo,North-West,8,9
+19,NR02,Sligo – Letterkenny,Regional,Sligo,North-West,115,4
+20,NR03,Letterkenny – Derry Road Link,Regional,Letterkenny,North-West,36,6
+21,DM01,Drogheda – Dublin City,Commuter,Drogheda,East,52,14
+22,DM02,Navan – Dublin City,Commuter,Navan,East,49,14
+23,DT03,Drogheda Town Service,Town,Drogheda,East,9,10
+24,DR04,Dundalk – Dublin Airport,Regional,Drogheda,East,75,7

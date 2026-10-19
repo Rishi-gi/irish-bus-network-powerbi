@@ -1,0 +1,528 @@
+<style>
+  .bx { font-family: var(--font-anthropic-sans); color: var(--color-fg); }
+  .bx-head h1 { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); margin: 0 0 var(--cds-gap-xs); }
+  .bx-take { color: var(--color-fg-muted); font-size: var(--cds-font-size-body); margin: 0 0 var(--cds-gap-md); max-width: 60rem; }
+  .bx-take b { font-weight: 600; color: var(--color-fg); }
+  .bx-note { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+  .bx-filters { display: flex; flex-wrap: wrap; gap: var(--cds-gap-sm); align-items: end; margin-bottom: var(--cds-gap-md); }
+  .bx-filters label { display: flex; flex-direction: column; gap: 2px; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+  .bx-filters select, .bx-btn { font: inherit; font-size: var(--cds-font-size-body); color: var(--color-fg); background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-xs) var(--cds-pad-sm); }
+  .bx-btn { cursor: pointer; }
+  .bx-tabs { display: flex; flex-wrap: wrap; gap: var(--cds-gap-xs); border-bottom: 1px solid var(--color-border-line); margin-bottom: var(--cds-gap-md); }
+  .bx-tab { font: inherit; font-size: var(--cds-font-size-body); background: none; border: 0; border-bottom: 2px solid transparent; padding: var(--cds-pad-xs) var(--cds-pad-sm); color: var(--color-fg-muted); cursor: pointer; }
+  .bx-tab[aria-selected="true"] { color: var(--color-fg); border-bottom-color: var(--color-fg); font-weight: var(--cds-font-weight-medium); }
+  .bx-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr)); gap: var(--cds-gap-md); margin-bottom: var(--cds-gap-md); }
+  .bx-card { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); min-width: 0; }
+  .bx-card h3 { font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); margin: 0 0 2px; }
+  .bx-card .bx-note { margin: 0 0 var(--cds-gap-sm); }
+  .bx-kpi .lbl { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+  .bx-kpi .val { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); font-variant-numeric: tabular-nums; margin: 4px 0; }
+  .bx-kpi .sub { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+  .bx-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr)); gap: var(--cds-gap-md); margin-bottom: var(--cds-gap-md); }
+  .bx-chart { position: relative; min-height: 260px; }
+  .bx-chart svg { display: block; }
+  .bx-chart text { font-family: var(--font-anthropic-sans); font-size: var(--cds-font-size-caption); fill: var(--color-fg-muted); }
+  .bx-tip { position: absolute; pointer-events: none; background: var(--cds-surface-popover); border: 1px solid var(--cds-border); border-radius: var(--cds-radius); box-shadow: var(--cds-shadow-popover); padding: var(--cds-pad-xs) var(--cds-pad-sm); font-size: var(--cds-font-size-caption); white-space: nowrap; z-index: 2; }
+  .bx-tip .h { color: var(--cds-text-secondary); }
+  .bx-empty { display: flex; align-items: center; justify-content: center; min-height: 200px; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+  .bx-good { color: var(--color-ok); } .bx-bad { color: var(--color-bad); } .bx-warn { color: var(--color-warn); }
+  .bx-tablewrap { max-height: 32rem; overflow: auto; }
+  .bx-table { width: 100%; border-collapse: collapse; font-size: var(--cds-font-size-body); font-variant-numeric: tabular-nums; }
+  .bx-table th, .bx-table td { padding: var(--cds-pad-xs) var(--cds-pad-sm); border-bottom: 1px solid var(--color-border-line); text-align: right; white-space: nowrap; }
+  .bx-table th:nth-child(-n+4), .bx-table td:nth-child(-n+4) { text-align: left; }
+  .bx-table th { position: sticky; top: 0; background: var(--color-panel); font-weight: var(--cds-font-weight-medium); }
+  .bx-table th button { font: inherit; background: none; border: 0; padding: 0; color: inherit; cursor: pointer; }
+  .bx-legend { display: flex; flex-wrap: wrap; gap: var(--cds-gap-sm); font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); margin-bottom: var(--cds-gap-xs); }
+  .bx-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 4px; vertical-align: -1px; }
+  .bx-explain { font-size: var(--cds-font-size-body); line-height: 1.5; }
+  .bx-explain p { margin: 0 0 var(--cds-gap-sm); }
+  [data-dash-source-state=refreshing] { opacity: .5; transition: opacity var(--cds-dur-slow); }
+  @media (max-width: 640px) { .bx-hide-narrow { display: none; } }
+</style>
+
+<div class="bx">
+  <div class="bx-head">
+    <h1 id="title">Regional bus network performance</h1>
+    <p class="bx-take" id="takeaway">
+      <span class="bx-scope">Network, 2024–2025</span>: lost km was
+      <b class="t-lost dash-skeleton" data-source="kpi" data-field="LostKmPct">—</b> of scheduled km against a 2.0% target, punctuality was
+      <b class="t-punct dash-skeleton" data-source="kpi" data-field="PunctualityPct">—</b> against 90%, and the largest cause of lost km was
+      <b class="t-cause dash-skeleton" data-source="cause" data-field="Cause">—</b>.
+    </p>
+  </div>
+
+  <div class="bx-filters">
+    <label>Year<select class="f-year" aria-label="Year"><option value="All">2024–2025</option><option>2024</option><option>2025</option></select></label>
+    <label>Region<select class="f-region" aria-label="Region"><option value="All">All regions</option><option>South</option><option>West</option><option>Mid-West</option><option>South-East</option><option>North-West</option><option>East</option></select></label>
+    <label>Service type<select class="f-stype" aria-label="Service type"><option value="All">All types</option><option>City</option><option>Town</option><option>Commuter</option><option>Regional</option></select></label>
+    <button class="bx-btn f-reset" type="button">Reset</button>
+  </div>
+
+  <div class="bx-tabs" role="tablist">
+    <button class="bx-tab" role="tab" data-tab="overview" id="tab-overview">Overview</button>
+    <button class="bx-tab" role="tab" data-tab="lostkm" id="tab-lostkm">Lost kilometres</button>
+    <button class="bx-tab" role="tab" data-tab="punctuality" id="tab-punctuality">Punctuality</button>
+    <button class="bx-tab" role="tab" data-tab="quality" id="tab-quality">Data quality</button>
+    <button class="bx-tab" role="tab" data-tab="routes" id="tab-routes">Routes</button>
+  </div>
+
+  <!-- OVERVIEW -->
+  <section class="bx-page" id="overview">
+    <div class="bx-kpis">
+      <div class="bx-card bx-kpi"><div class="lbl">Lost km % · target ≤ 2.0%</div><div class="val k-lost dash-skeleton" data-source="kpi" data-field="LostKmPct">—</div><div class="sub k-lost-sub"></div></div>
+      <div class="bx-card bx-kpi"><div class="lbl">Punctuality · target ≥ 90%</div><div class="val k-punct dash-skeleton" data-source="kpi" data-field="PunctualityPct">—</div><div class="sub k-punct-sub"></div></div>
+      <div class="bx-card bx-kpi"><div class="lbl">AVL tracking rate · target ≥ 98%</div><div class="val k-avl dash-skeleton" data-source="kpi" data-field="AVLTrackingPct">—</div><div class="sub k-avl-sub"></div></div>
+      <div class="bx-card bx-kpi"><div class="lbl">Scheduled km</div><div class="val k-sched dash-skeleton" data-source="kpi" data-field="ScheduledKm">—</div><div class="sub">Lost: <span class="k-lostkm" data-source="kpi" data-field="LostKm">—</span> km</div></div>
+      <div class="bx-card bx-kpi"><div class="lbl">Passengers</div><div class="val k-pax dash-skeleton" data-source="kpi" data-field="Passengers">—</div><div class="sub">Journeys not operated: <span class="k-notop" data-source="kpi" data-field="NotOperated">—</span></div></div>
+    </div>
+    <div class="bx-grid">
+      <div class="bx-card" id="card-lost-trend"><h3>Lost km % by month, against the 2% target</h3><p class="bx-note">Lost km ÷ scheduled km. The dashed line is the target.</p><div class="bx-chart c-lost-trend" data-source="trend"></div></div>
+      <div class="bx-card" id="card-region"><h3>Lost km % by region</h3><p class="bx-note">Regions above target are red.</p><div class="bx-chart c-region" data-source="kpi"></div></div>
+    </div>
+    <div class="bx-grid">
+      <div class="bx-card" id="card-punct-trend"><h3>Punctuality by month, against the 90% target</h3><p class="bx-note">Departures between 1 minute early and 5 minutes late ÷ tracked departures. Y-axis starts at 75%.</p><div class="bx-chart c-punct-trend" data-source="trend"></div></div>
+    </div>
+  </section>
+
+  <!-- LOST KM -->
+  <section class="bx-page" id="lostkm" hidden>
+    <div class="bx-grid">
+      <div class="bx-card" id="card-lost-bars"><h3>Lost km by month</h3><p class="bx-note">January 2025 includes a simulated severe-weather day.</p><div class="bx-chart c-lost-bars" data-source="trend"></div></div>
+      <div class="bx-card" id="card-cause"><h3>Where the lost km came from</h3><p class="bx-note">Internal causes are ones the operator controls.</p><div class="bx-legend"><span><i style="background: var(--cds-chart-status-critical)"></i>Internal</span><span><i style="background: var(--cds-chart-muted)"></i>External</span></div><div class="bx-chart c-cause" data-source="cause"></div></div>
+    </div>
+    <div class="bx-grid">
+      <div class="bx-card" id="card-age"><h3>Breakdown lost km per 1,000 scheduled km, by vehicle age</h3><p class="bx-note">Only vehicle defect / breakdown losses, divided by all scheduled km run by that age band.</p><div class="bx-chart c-age" data-source="age"></div></div>
+    </div>
+  </section>
+
+  <!-- PUNCTUALITY -->
+  <section class="bx-page" id="punctuality" hidden>
+    <div class="bx-grid">
+      <div class="bx-card" id="card-heat"><h3>Punctuality by time of day and weekday</h3><p class="bx-note">Darker red = worse. Peaks are 07:00–09:59 and 16:00–18:59.</p><div class="bx-chart c-heat" data-source="heat"></div></div>
+      <div class="bx-card" id="card-punct-region"><h3>Punctuality by region</h3><p class="bx-note">Regions below the 90% target are red.</p><div class="bx-chart c-punct-region" data-source="kpi"></div></div>
+    </div>
+  </section>
+
+  <!-- DATA QUALITY -->
+  <section class="bx-page" id="quality" hidden>
+    <div class="bx-grid">
+      <div class="bx-card" id="card-avl"><h3>AVL tracking rate by region, month by month</h3><p class="bx-note">Operated journeys with an AVL (Automatic Vehicle Location) record ÷ operated journeys. North-West highlighted: tracking equipment upgraded June 2025.</p><div class="bx-chart c-avl" data-source="trend"></div></div>
+      <div class="bx-card bx-explain" id="card-method">
+        <h3>How missing journeys are classified</h3>
+        <p>A journey that does not appear in AVL tracking is not automatically lost service. It is checked against vehicle and driver-duty records.</p>
+        <p><b>If it ran</b>, it is classed as <i>Operated – AVL non-tracking</i> with cause <i>AVL / GPS data issue</i>. It counts against the tracking rate but carries <b>zero lost km</b>.</p>
+        <p><b>If it didn't run</b>, or ran only part of the route, it is <i>Not operated</i>, <i>Partially operated</i> or <i>Stops bypassed</i>. The missing distance is recorded as lost km with its real cause.</p>
+        <p class="bx-note">This keeps data-quality problems from being reported as service failures, and the other way round.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROUTES -->
+  <section class="bx-page" id="routes" hidden>
+    <div class="bx-card" id="card-routes">
+      <h3>Route scorecard</h3><p class="bx-note">Click a column to sort. Red = misses target.</p>
+      <div class="bx-tablewrap">
+        <table class="bx-table t-routes" data-source="routes" data-row-key="Year,RouteCode">
+          <thead><tr>
+            <th data-field="RouteCode"><button data-k="RouteCode">Route</button></th>
+            <th data-field="RouteName"><button data-k="RouteName">Name</button></th>
+            <th data-field="Region" class="bx-hide-narrow"><button data-k="Region">Region</button></th>
+            <th data-field="ServiceType" class="bx-hide-narrow"><button data-k="ServiceType">Type</button></th>
+            <th data-field="Journeys" class="bx-hide-narrow"><button data-k="Journeys">Journeys</button></th>
+            <th data-field="LostKm"><button data-k="LostKm">Lost km</button></th>
+            <th data-field="LostKmPct"><button data-k="LostKmPct">Lost km %</button></th>
+            <th data-field="PunctualityPct"><button data-k="PunctualityPct">Punctuality</button></th>
+            <th data-field="AVLTrackingPct" class="bx-hide-narrow"><button data-k="AVLTrackingPct">AVL tracking</button></th>
+            <th data-field="Passengers" class="bx-hide-narrow"><button data-k="Passengers">Passengers</button></th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <p class="bx-note">Synthetic data for a Power BI portfolio project: 299,136 generated journeys on 24 routes, Jan 2024 – Dec 2025. Not real operator data. Targets are the project's own assumptions.</p>
+</div>
+
+<script>
+  // ---------- shared helpers (on window so later scripts can use them)
+  const B = (window.BX = {});
+  B.pct1 = d3.format('.1%');
+  B.pct2 = d3.format('.2%');
+  B.int = d3.format(',');
+  B.compact = (v) => new Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 }).format(v);
+  B.month = (ym) => new Date(ym + '-01T00:00:00Z');
+  B.monthFmt = d3.utcFormat('%b %Y');
+  B.T = { lost: 0.02, punct: 0.9, avl: 0.98 };
+  B.p = () => Object.assign({ year: 'All', region: 'All', stype: 'All' }, dash.params());
+  B.rows = (id) => { const d = dash.data(id); return d.status === 'ok' ? d.data : null; };
+  B.status = (id) => dash.data(id).status;
+  B.where = (o) => Object.entries(o).map(([k, v]) => k + '=' + encodeURIComponent(v)).join('&');
+  B.resolve = (c) => { const s = document.createElement('span'); s.style.color = c; document.body.appendChild(s); const v = getComputedStyle(s).color; s.remove(); return v; };
+
+  B.empty = (el, id, msg) => {
+    el.replaceChildren();
+    const st = id ? B.status(id) : 'ok';
+    if (st === 'error' || st === 'connect' || st === 'declined') {
+      const d = document.createElement('div'); d.className = 'bx-empty';
+      d.innerHTML = '<span style="width:.375rem;height:.375rem;border-radius:50%;background:var(--color-bad);display:inline-block;margin-right:6px"></span>';
+      d.append('Failed to load'); el.append(d); return;
+    }
+    if (st !== 'ok') { el.classList.add('dash-skeleton'); return; }
+    el.classList.remove('dash-skeleton');
+    const d = document.createElement('div'); d.className = 'bx-empty'; d.textContent = msg || 'No routes match these filters.'; el.append(d);
+  };
+
+  B.tip = (el) => {
+    let t = el.querySelector('.bx-tip');
+    if (!t) { t = document.createElement('div'); t.className = 'bx-tip'; t.hidden = true; el.append(t); }
+    return {
+      show(x, y, head, lines) {
+        t.replaceChildren();
+        const h = document.createElement('div'); h.className = 'h'; h.textContent = head; t.append(h);
+        lines.forEach(([color, name, val]) => {
+          const r = document.createElement('div');
+          if (color) { const i = document.createElement('i'); i.style.cssText = `display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:4px;background:${color}`; r.append(i); }
+          r.append((name ? name + ': ' : '') + val); t.append(r);
+        });
+        t.hidden = false;
+        const w = el.clientWidth, tw = t.offsetWidth;
+        t.style.left = Math.max(0, Math.min(w - tw, x + 12)) + 'px';
+        t.style.top = Math.max(0, y - 10) + 'px';
+      },
+      hide() { t.hidden = true; },
+    };
+  };
+
+  // Line chart over months. series: [{name, color, values:[{date, v}], width}]
+  B.lineChart = (el, series, o) => {
+    el.classList.remove('dash-skeleton');
+    el.replaceChildren();
+    const W = el.clientWidth || 600, H = o.height || 260;
+    const all = series.flatMap((s) => s.values);
+    const yMin = o.yMin ?? 0, yMax = Math.max(o.yMaxMin ?? 0, d3.max(all, (d) => d.v) * 1.08, (o.target ?? 0) * 1.1);
+    const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`);
+    const y = d3.scaleLinear([yMin, yMax], [H - 24, 10]).nice();
+    // measure tick label width
+    const probe = svg.append('text').text(o.fmt(y.ticks(5).slice(-1)[0]));
+    const ml = probe.node().getComputedTextLength() + 10; probe.remove();
+    const mr = o.endLabels ? 90 : 12;
+    const x = d3.scaleUtc(d3.extent(all, (d) => d.date), [ml, W - mr]);
+    svg.append('g').selectAll('line').data(y.ticks(5)).join('line')
+      .attr('x1', ml).attr('x2', W - mr).attr('y1', y).attr('y2', y).style('stroke', 'var(--cds-chart-grid)');
+    svg.append('g').selectAll('text').data(y.ticks(5)).join('text')
+      .attr('x', ml - 6).attr('y', (d) => y(d) + 4).attr('text-anchor', 'end').text(o.fmt);
+    const nt = Math.max(2, Math.min(8, Math.floor((W - ml - mr) / 80)));
+    svg.append('g').selectAll('text').data(x.ticks(nt)).join('text')
+      .attr('x', x).attr('y', H - 6).attr('text-anchor', 'middle').text(d3.utcFormat('%b %y'));
+    if (o.target != null) {
+      svg.append('line').attr('x1', ml).attr('x2', W - mr).attr('y1', y(o.target)).attr('y2', y(o.target))
+        .style('stroke', 'var(--cds-chart-reference)').attr('stroke-dasharray', '4 4');
+      svg.append('text').attr('x', W - mr).attr('y', y(o.target) - 4).attr('text-anchor', 'end').text('Target ' + o.fmt(o.target));
+    }
+    const line = d3.line().defined((d) => d.v != null && !isNaN(d.v)).x((d) => x(d.date)).y((d) => y(d.v));
+    series.forEach((s) => {
+      svg.append('path').datum(s.values).attr('d', line).style('fill', 'none').style('stroke', s.color)
+        .style('stroke-width', s.width || 2).attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round');
+    });
+    if (o.endLabels) {
+      const ends = series.map((s) => ({ s, d: s.values[s.values.length - 1] })).filter((e) => e.d)
+        .map((e) => ({ ...e, y: y(e.d.v) })).sort((a, b) => a.y - b.y);
+      for (let i = 1; i < ends.length; i++) if (ends[i].y - ends[i - 1].y < 12) ends[i].y = ends[i - 1].y + 12;
+      ends.forEach((e) => svg.append('text').attr('x', W - mr + 6).attr('y', e.y + 4).style('fill', e.s.color).text(e.s.name));
+    }
+    const tip = B.tip(el);
+    const dates = series[0]?.values.map((d) => d.date) || [];
+    const rule = svg.append('line').attr('y1', 10).attr('y2', H - 24).style('stroke', 'var(--cds-chart-axis)').style('opacity', 0);
+    svg.append('rect').attr('x', ml).attr('y', 0).attr('width', Math.max(0, W - ml - mr)).attr('height', H).style('fill', 'transparent')
+      .on('mousemove', (ev) => {
+        const [mx] = d3.pointer(ev);
+        const t = x.invert(mx);
+        const i = d3.leastIndex(dates, (d) => Math.abs(d - t));
+        if (i == null) return;
+        const dt = dates[i];
+        rule.attr('x1', x(dt)).attr('x2', x(dt)).style('opacity', 1);
+        const lines = series.map((s) => [series.length > 1 ? s.color : null, series.length > 1 ? s.name : '', s.values[i] ? o.fmt(s.values[i].v) : '—']);
+        const box = el.getBoundingClientRect(), sb = svg.node().getBoundingClientRect();
+        tip.show((x(dt) / W) * sb.width + sb.left - box.left, (d3.pointer(ev)[1] / H) * sb.height, B.monthFmt(dt), lines);
+      })
+      .on('mouseleave', () => { tip.hide(); rule.style('opacity', 0); });
+  };
+
+  // Horizontal bars. rows: [{label, v, color, highlight}]
+  B.barH = (el, rows, o) => {
+    el.classList.remove('dash-skeleton');
+    el.replaceChildren();
+    const W = el.clientWidth || 500, bh = 22, gap = 10, H = rows.length * (bh + gap) + 10;
+    const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`);
+    const probe = svg.append('text');
+    const ml = d3.max(rows, (r) => { probe.text(r.label); return probe.node().getComputedTextLength(); }) + 10;
+    probe.text(o.fmt(d3.max(rows, (r) => r.v)));
+    const mr = probe.node().getComputedTextLength() + 10; probe.remove();
+    const xmax = Math.max(d3.max(rows, (r) => r.v), o.target || 0);
+    const x = d3.scaleLinear([0, xmax], [ml, W - mr]);
+    const tip = B.tip(el);
+    rows.forEach((r, i) => {
+      const yy = 5 + i * (bh + gap);
+      svg.append('text').attr('x', ml - 8).attr('y', yy + bh / 2 + 4).attr('text-anchor', 'end').text(r.label)
+        .style('fill', r.highlight === false ? 'var(--color-fg-muted)' : 'var(--color-fg)');
+      svg.append('rect').attr('x', ml).attr('y', yy).attr('height', bh).attr('rx', 4)
+        .attr('width', Math.max(1, x(r.v) - ml)).style('fill', r.color).style('opacity', r.highlight === false ? 0.35 : 1)
+        .on('mousemove', (ev) => { const [mx, my] = d3.pointer(ev, el); tip.show(mx, my, r.label, [[null, '', o.fmt(r.v)]]); })
+        .on('mouseleave', () => tip.hide());
+      svg.append('text').attr('x', x(r.v) + 6).attr('y', yy + bh / 2 + 4).text(o.fmt(r.v));
+    });
+    if (o.target != null) {
+      svg.append('line').attr('x1', x(o.target)).attr('x2', x(o.target)).attr('y1', 0).attr('y2', H)
+        .style('stroke', 'var(--cds-chart-reference)').attr('stroke-dasharray', '4 4');
+    }
+  };
+</script>
+
+<script>
+  // ---------- filters, tabs
+  const B = window.BX;
+  const sel = { year: document.querySelector('.f-year'), region: document.querySelector('.f-region'), stype: document.querySelector('.f-stype') };
+  Object.entries(sel).forEach(([k, s]) => s.addEventListener('change', () => dash.setParams({ [k]: s.value })));
+  document.querySelector('.f-reset').addEventListener('click', () => dash.resetParams());
+
+  B.tab = 'overview';
+  const tabs = [...document.querySelectorAll('.bx-tab')];
+  const show = (name) => {
+    B.tab = name;
+    tabs.forEach((t) => t.setAttribute('aria-selected', String(t.dataset.tab === name)));
+    document.querySelectorAll('.bx-page').forEach((p) => (p.hidden = p.id !== name));
+    dash.setLink(name);
+    B.draw && B.draw();
+  };
+  tabs.forEach((t) => t.addEventListener('click', () => show(t.dataset.tab)));
+  const start = location.hash.slice(1);
+  show(tabs.some((t) => t.dataset.tab === start) ? start : 'overview');
+</script>
+
+<script>
+  // ---------- drawing
+  const B = window.BX;
+  const C = { cat: dash.colors, bad: 'var(--cds-chart-status-critical)', muted: 'var(--cds-chart-muted)' };
+  const REGIONS = ['South', 'West', 'Mid-West', 'South-East', 'North-West', 'East'];
+  const AGE = ['0–3 yrs', '4–7 yrs', '8–11 yrs', '12+ yrs'];
+
+  const setMark = (el, src, field, where, text) => {
+    el.setAttribute('data-source', src);
+    el.setAttribute('data-field', field);
+    if (where) el.setAttribute('data-where', where); else el.removeAttribute('data-where');
+    el.textContent = text;
+    el.classList.remove('dash-skeleton');
+  };
+  const cls = (el, good) => { el.classList.remove('bx-good', 'bx-bad'); if (good != null) el.classList.add(good ? 'bx-good' : 'bx-bad'); };
+
+  function drawHeader(p, kpiRow, causeTop) {
+    const scope = [p.region === 'All' ? 'Network' : p.region + ' region', p.stype === 'All' ? null : p.stype + ' services', p.year === 'All' ? '2024–2025' : p.year].filter(Boolean).join(', ');
+    document.querySelector('.bx-scope').textContent = scope;
+    const w = B.where({ Year: p.year, Region: p.region, ServiceType: p.stype });
+    const tl = document.querySelector('.t-lost'), tp = document.querySelector('.t-punct'), tc = document.querySelector('.t-cause');
+    if (kpiRow) {
+      setMark(tl, 'kpi', 'LostKmPct', w, B.pct2(+kpiRow.LostKmPct)); cls(tl, +kpiRow.LostKmPct <= B.T.lost);
+      setMark(tp, 'kpi', 'PunctualityPct', w, B.pct1(+kpiRow.PunctualityPct)); cls(tp, +kpiRow.PunctualityPct >= B.T.punct);
+    } else { tl.textContent = '—'; tp.textContent = '—'; }
+    if (causeTop) setMark(tc, 'cause', 'Cause', B.where({ Year: p.year, Region: p.region, ServiceType: p.stype, Cause: causeTop.Cause }), causeTop.Cause.toLowerCase());
+    else tc.textContent = '—';
+  }
+
+  function drawKpis(p, r) {
+    const w = B.where({ Year: p.year, Region: p.region, ServiceType: p.stype });
+    const items = [
+      ['.k-lost', 'LostKmPct', B.pct2, (v) => v <= B.T.lost],
+      ['.k-punct', 'PunctualityPct', B.pct1, (v) => v >= B.T.punct],
+      ['.k-avl', 'AVLTrackingPct', B.pct1, (v) => v >= B.T.avl],
+      ['.k-sched', 'ScheduledKm', B.compact, null],
+      ['.k-pax', 'Passengers', B.compact, null],
+      ['.k-lostkm', 'LostKm', B.int, null],
+      ['.k-notop', 'NotOperated', B.int, null],
+    ];
+    items.forEach(([s, f, fmt, good]) => {
+      const el = document.querySelector(s);
+      if (!r) { el.textContent = '—'; return; }
+      setMark(el, 'kpi', f, w, fmt(+r[f]));
+      if (good) cls(el, good(+r[f]));
+    });
+    // previous-year comparison (only when 2025 is picked)
+    [['.k-lost-sub', 'LostKmPctPY', B.pct2, true], ['.k-punct-sub', 'PunctualityPctPY', B.pct1, false], ['.k-avl-sub', 'AVLTrackingPctPY', B.pct1, false]].forEach(([s, f, fmt, lowerBetter]) => {
+      const el = document.querySelector(s);
+      el.replaceChildren();
+      if (!r || r[f] === '' || r[f] == null) { el.textContent = p.year === 'All' ? 'Whole period' : 'No earlier year in the data'; return; }
+      const cur = +r[f.replace('PY', '')], prev = +r[f];
+      const better = lowerBetter ? cur < prev : cur > prev;
+      const arrow = document.createElement('span'); arrow.textContent = (cur > prev ? '▲ ' : cur < prev ? '▼ ' : '');
+      arrow.className = cur === prev ? '' : better ? 'bx-good' : 'bx-bad';
+      const v = document.createElement('span');
+      v.setAttribute('data-source', 'kpi'); v.setAttribute('data-field', f); v.setAttribute('data-where', B.where({ Year: p.year, Region: p.region, ServiceType: p.stype }));
+      v.textContent = fmt(prev);
+      el.append(arrow, 'vs ', v, ' in 2024');
+    });
+  }
+
+  function trendSeries(trend, p, field, region) {
+    return trend.filter((r) => r.Region === region && r.ServiceType === p.stype && (p.year === 'All' || r.Year === p.year))
+      .sort((a, b) => d3.ascending(a.YearMonth, b.YearMonth))
+      .map((r) => ({ date: B.month(r.YearMonth), v: r[field] === '' ? null : +r[field], ym: r.YearMonth }));
+  }
+
+  function drawOverview(p, kpi, trend) {
+    const elL = document.querySelector('.c-lost-trend'), elP = document.querySelector('.c-punct-trend'), elR = document.querySelector('.c-region');
+    if (!trend) { B.empty(elL, 'trend'); B.empty(elP, 'trend'); }
+    else {
+      const sl = trendSeries(trend, p, 'LostKmPct', p.region);
+      if (!sl.length) { B.empty(elL); B.empty(elP); }
+      else {
+        B.lineChart(elL, [{ name: 'Lost km %', color: C.cat[0], values: sl }], { fmt: B.pct1, target: B.T.lost });
+        B.lineChart(elP, [{ name: 'Punctuality', color: C.cat[0], values: trendSeries(trend, p, 'PunctualityPct', p.region) }], { fmt: d3.format('.0%'), target: B.T.punct, yMin: 0.75, yMaxMin: 1 });
+      }
+    }
+    if (!kpi) { B.empty(elR, 'kpi'); return; }
+    const rows = kpi.filter((r) => r.Year === p.year && r.ServiceType === p.stype && r.Region !== 'All')
+      .map((r) => ({ label: r.Region, v: +r.LostKmPct, color: +r.LostKmPct > B.T.lost ? C.bad : C.cat[0], highlight: p.region === 'All' ? undefined : r.Region === p.region }))
+      .sort((a, b) => b.v - a.v);
+    if (!rows.length) B.empty(elR); else B.barH(elR, rows, { fmt: B.pct2, target: B.T.lost });
+  }
+
+  function drawLostKm(p, trend, cause, age) {
+    const elB = document.querySelector('.c-lost-bars'), elC = document.querySelector('.c-cause'), elA = document.querySelector('.c-age');
+    // monthly bars
+    if (!trend) B.empty(elB, 'trend');
+    else {
+      const rows = trend.filter((r) => r.Region === p.region && r.ServiceType === p.stype && (p.year === 'All' || r.Year === p.year))
+        .sort((a, b) => d3.ascending(a.YearMonth, b.YearMonth));
+      if (!rows.length) B.empty(elB);
+      else {
+        elB.classList.remove('dash-skeleton'); elB.replaceChildren();
+        const W = elB.clientWidth || 600, H = 260;
+        const svg = d3.select(elB).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`);
+        const y = d3.scaleLinear([0, d3.max(rows, (r) => +r.LostKm) * 1.08], [H - 24, 10]).nice();
+        const probe = svg.append('text').text(B.compact(y.ticks(4).slice(-1)[0]));
+        const ml = probe.node().getComputedTextLength() + 10; probe.remove();
+        const x = d3.scaleBand(rows.map((r) => r.YearMonth), [ml, W - 8]).padding(0.25);
+        svg.append('g').selectAll('line').data(y.ticks(4)).join('line').attr('x1', ml).attr('x2', W - 8).attr('y1', y).attr('y2', y).style('stroke', 'var(--cds-chart-grid)');
+        svg.append('g').selectAll('text').data(y.ticks(4)).join('text').attr('x', ml - 6).attr('y', (d) => y(d) + 4).attr('text-anchor', 'end').text(B.compact);
+        const tip = B.tip(elB);
+        svg.append('g').selectAll('rect').data(rows).join('rect')
+          .attr('x', (r) => x(r.YearMonth)).attr('width', x.bandwidth()).attr('y', (r) => y(+r.LostKm)).attr('height', (r) => y(0) - y(+r.LostKm)).attr('rx', 3)
+          .style('fill', (r) => (+r.LostKmPct > B.T.lost ? C.bad : C.cat[0]))
+          .on('mousemove', (ev, r) => { const [mx, my] = d3.pointer(ev, elB); tip.show(mx, my, B.monthFmt(B.month(r.YearMonth)), [[null, 'Lost km', B.int(+r.LostKm)], [null, 'Lost km %', B.pct2(+r.LostKmPct)]]); })
+          .on('mouseleave', () => tip.hide());
+        const step = Math.ceil(rows.length / Math.max(2, Math.floor((W - ml) / 70)));
+        svg.append('g').selectAll('text').data(rows.filter((_, i) => i % step === 0)).join('text')
+          .attr('x', (r) => x(r.YearMonth) + x.bandwidth() / 2).attr('y', H - 6).attr('text-anchor', 'middle').text((r) => d3.utcFormat('%b %y')(B.month(r.YearMonth)));
+      }
+    }
+    // causes
+    if (!cause) B.empty(elC, 'cause');
+    else {
+      const rows = cause.filter((r) => r.Year === p.year && r.Region === p.region && r.ServiceType === p.stype)
+        .map((r) => ({ label: r.Cause, v: +r.LostKm, share: +r.Share, color: r.CauseCategory === 'Internal' ? C.bad : C.muted }))
+        .sort((a, b) => b.v - a.v);
+      if (!rows.length) B.empty(elC); else B.barH(elC, rows, { fmt: B.int });
+    }
+    // age
+    if (!age) B.empty(elA, 'age');
+    else {
+      const rows = AGE.map((a) => age.find((r) => r.Year === p.year && r.Region === p.region && r.ServiceType === p.stype && r.AgeBand === a))
+        .filter(Boolean).map((r) => ({ label: r.AgeBand, v: +r.BreakdownPer1000Km, color: C.cat[0] }));
+      if (!rows.length) B.empty(elA); else B.barH(elA, rows, { fmt: d3.format('.2f') });
+    }
+  }
+
+  function drawPunctuality(p, heat, kpi) {
+    const elH = document.querySelector('.c-heat'), elR = document.querySelector('.c-punct-region');
+    if (!heat) B.empty(elH, 'heat');
+    else {
+      const rows = heat.filter((r) => r.Year === p.year && r.Region === p.region && r.ServiceType === p.stype);
+      if (!rows.length) B.empty(elH);
+      else {
+        elH.classList.remove('dash-skeleton'); elH.replaceChildren();
+        const bands = [...new Set(rows.sort((a, b) => a.TimeBandOrder - b.TimeBandOrder).map((r) => r.TimeBand))];
+        const days = [...new Set(rows.sort((a, b) => a.WeekdayNo - b.WeekdayNo).map((r) => r.Weekday))];
+        const W = elH.clientWidth || 500, ch = 34, H = bands.length * ch + 26;
+        const svg = d3.select(elH).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`);
+        const probe = svg.append('text'); const ml = d3.max(bands, (b) => { probe.text(b); return probe.node().getComputedTextLength(); }) + 10; probe.remove();
+        const x = d3.scaleBand(days, [ml, W]).padding(0.06), y = d3.scaleBand(bands, [20, H]).padding(0.06);
+        const vals = rows.map((r) => +r.PunctualityPct);
+        const lo = B.resolve('var(--cds-chart-status-critical)'), hi = B.resolve(dash.colors[0]);
+        const col = d3.scaleLinear([d3.min(vals), d3.max(vals)], [0, 1]);
+        const ramp = d3.interpolateRgb(lo, hi);
+        const tip = B.tip(elH);
+        svg.append('g').selectAll('text').data(days).join('text').attr('x', (d) => x(d) + x.bandwidth() / 2).attr('y', 12).attr('text-anchor', 'middle').text((d) => d);
+        svg.append('g').selectAll('text').data(bands).join('text').attr('x', ml - 8).attr('y', (b) => y(b) + y.bandwidth() / 2 + 4).attr('text-anchor', 'end').text((b) => b);
+        const g = svg.append('g').selectAll('g').data(rows).join('g');
+        g.append('rect').attr('x', (r) => x(r.Weekday)).attr('y', (r) => y(r.TimeBand)).attr('width', x.bandwidth()).attr('height', y.bandwidth()).attr('rx', 3)
+          .style('fill', (r) => ramp(col(+r.PunctualityPct)))
+          .on('mousemove', (ev, r) => { const [mx, my] = d3.pointer(ev, elH); tip.show(mx, my, `${r.Weekday} · ${r.TimeBand}`, [[null, 'Punctuality', B.pct1(+r.PunctualityPct)], [null, 'Tracked departures', B.int(+r.Tracked)]]); })
+          .on('mouseleave', () => tip.hide());
+        if (x.bandwidth() > 34) g.append('text').attr('x', (r) => x(r.Weekday) + x.bandwidth() / 2).attr('y', (r) => y(r.TimeBand) + y.bandwidth() / 2 + 4)
+          .attr('text-anchor', 'middle').style('fill', '#fff').style('pointer-events', 'none').text((r) => d3.format('.0%')(+r.PunctualityPct));
+      }
+    }
+    if (!kpi) B.empty(elR, 'kpi');
+    else {
+      const rows = kpi.filter((r) => r.Year === p.year && r.ServiceType === p.stype && r.Region !== 'All')
+        .map((r) => ({ label: r.Region, v: +r.PunctualityPct, color: +r.PunctualityPct < B.T.punct ? C.bad : C.cat[0], highlight: p.region === 'All' ? undefined : r.Region === p.region }))
+        .sort((a, b) => a.v - b.v);
+      if (!rows.length) B.empty(elR); else B.barH(elR, rows, { fmt: B.pct1, target: B.T.punct });
+    }
+  }
+
+  function drawQuality(p, trend) {
+    const el = document.querySelector('.c-avl');
+    if (!trend) { B.empty(el, 'trend'); return; }
+    const series = REGIONS.map((reg) => ({
+      name: reg, values: trendSeries(trend, p, 'AVLTrackingPct', reg),
+      color: reg === 'North-West' ? C.cat[0] : (p.region === reg ? C.cat[1] : C.muted), width: reg === 'North-West' || p.region === reg ? 2.5 : 1.5,
+    })).filter((s) => s.values.length);
+    if (!series.length) { B.empty(el); return; }
+    series.sort((a, b) => (a.name === 'North-West') - (b.name === 'North-West'));
+    B.lineChart(el, series, { fmt: d3.format('.0%'), target: B.T.avl, yMin: 0.9, yMaxMin: 1, endLabels: true, height: 300 });
+  }
+
+  B.sort = B.sort || { k: 'LostKm', dir: -1 };
+  document.querySelectorAll('.t-routes th button').forEach((b) => b.addEventListener('click', () => {
+    B.sort = { k: b.dataset.k, dir: B.sort.k === b.dataset.k ? -B.sort.dir : (['RouteCode', 'RouteName', 'Region', 'ServiceType'].includes(b.dataset.k) ? 1 : -1) };
+    B.draw();
+  }));
+  function drawRoutes(p, routes) {
+    const tb = document.querySelector('.t-routes tbody');
+    tb.replaceChildren();
+    document.querySelectorAll('.t-routes th').forEach((th) => th.setAttribute('aria-sort', th.dataset.field === B.sort.k ? (B.sort.dir > 0 ? 'ascending' : 'descending') : 'none'));
+    if (!routes) return;
+    const text = ['RouteCode', 'RouteName', 'Region', 'ServiceType'];
+    const rows = routes.filter((r) => r.Year === p.year && (p.region === 'All' || r.Region === p.region) && (p.stype === 'All' || r.ServiceType === p.stype))
+      .sort((a, b) => B.sort.dir * (text.includes(B.sort.k) ? d3.ascending(a[B.sort.k], b[B.sort.k]) : (+a[B.sort.k]) - (+b[B.sort.k])));
+    rows.forEach((r) => {
+      const tr = document.createElement('tr');
+      tr.dataset.key = encodeURIComponent(r.Year) + ',' + encodeURIComponent(r.RouteCode);
+      const cells = [
+        [r.RouteCode], [r.RouteName], [r.Region, 'bx-hide-narrow'], [r.ServiceType, 'bx-hide-narrow'], [B.int(+r.Journeys), 'bx-hide-narrow'],
+        [B.int(+r.LostKm)], [B.pct2(+r.LostKmPct), +r.LostKmPct > B.T.lost ? 'bx-bad' : ''],
+        [B.pct1(+r.PunctualityPct), +r.PunctualityPct < B.T.punct ? 'bx-bad' : ''],
+        [B.pct1(+r.AVLTrackingPct), 'bx-hide-narrow ' + (+r.AVLTrackingPct < B.T.avl ? 'bx-bad' : '')], [B.int(+r.Passengers), 'bx-hide-narrow'],
+      ];
+      cells.forEach(([v, c]) => { const td = document.createElement('td'); td.textContent = v; if (c) td.className = c; tr.append(td); });
+      tb.append(tr);
+    });
+  }
+
+  B.draw = () => {
+    const p = B.p();
+    sel.year.value = p.year; sel.region.value = p.region; sel.stype.value = p.stype;
+    const kpi = B.rows('kpi'), trend = B.rows('trend'), cause = B.rows('cause');
+    const kpiRow = kpi && kpi.find((r) => r.Year === p.year && r.Region === p.region && r.ServiceType === p.stype);
+    const causeTop = cause && cause.filter((r) => r.Year === p.year && r.Region === p.region && r.ServiceType === p.stype).sort((a, b) => +b.LostKm - +a.LostKm)[0];
+    drawHeader(p, kpiRow, causeTop);
+    if (B.tab === 'overview') { drawKpis(p, kpiRow); drawOverview(p, kpi, trend); }
+    if (B.tab === 'lostkm') drawLostKm(p, trend, cause, B.rows('age'));
+    if (B.tab === 'punctuality') drawPunctuality(p, B.rows('heat'), kpi);
+    if (B.tab === 'quality') drawQuality(p, trend);
+    if (B.tab === 'routes') drawRoutes(p, B.rows('routes'));
+  };
+  const sel = { year: document.querySelector('.f-year'), region: document.querySelector('.f-region'), stype: document.querySelector('.f-stype') };
+  dash.onData(B.draw);
+</script>
